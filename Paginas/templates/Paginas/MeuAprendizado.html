@@ -1,0 +1,31 @@
+{%extends 'base.html'%}
+{% load static %}
+
+{%block id%}<html lang="en">{%endblock%}
+{%block title%}Meu Aprendizado{%endblock%}
+{%block TextoHeader%}Meu Aprendizado{%endblock%}
+{%block conteudo%}
+<h1>Meus Cursos:</h1>
+{% if Cursos %}
+    <div class = 'cursos'>
+        {% for curso in Cursos %}
+                <a href="{% url 'PlayerVideo' curso.id %}">
+                    <div class = "cursox" style="background-image: url({{curso.foto.url}});
+                                                background-repeat: no-repeat;
+                                                background-size: cover;
+                                                background-position: center;">
+                        <div class = "curso-zindex">
+                            <p class = "curso-info">Nome:</p>
+                            <p class = "curso-info">{{curso.nome}}</p>
+                        </div>
+                    </div>
+                </a>
+        {% endfor %}
+    </div>
+{% else %}
+    <center>
+        <img src = "https://cdn-icons-png.flaticon.com/512/3721/3721746.png" width="10%" style="margin-top: 10rem; filter: opacity(25%);">
+        <h4 style="color: #949494;">Parece que você não possui nenhum curso</h4>
+    </center>
+{% endif %}
+{%endblock%}

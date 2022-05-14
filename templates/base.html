@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+{% block id %}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{%endblock%}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
+    <link href = '{% static "Paginas/Css.css" %}' rel = "stylesheet">
+    <script src="https://kit.fontawesome.com/ba25beb2a7.js"></script>
+</head>
+
+<body>
+<nav class="BN">
+        <ul class="Nav-BN">
+            <li class="logo">
+                <a href="{% url 'Site_Educacional' %}" class="logo-nav">
+                    <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo">
+                </a>
+                <span class = "texto-logo">LMG ARTS</span>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'Site_Educacional' %}" class="link-nav">
+                    <i class="fa-solid fa-house-user" id = "logo"></i>
+                    <span class="link-text">Página inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'Perfil' %}" class="link-nav">
+                    <i class="fa-solid fa-user" id = "logo"></i>
+                    <span class="link-text">Perfil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'MeuAprendizado' %}" class="link-nav">
+                    <i class="fa-solid fa-book-open-reader" id = "logo"></i>
+                    <span class="link-text">Meu Aprendizado</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'Catalogo' %}" class="link-nav">
+                    <i class="fa-solid fa-bag-shopping" id = "logo"></i>
+                    <span class="link-text">Catálogo</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{% url 'Logout' %}" class="link-nav">
+                    <i class="fa-solid fa-arrow-right-from-bracket" id="logo"></i>
+                    <span class="link-text">Sair</span>
+                </a>
+            </li>
+
+            <li class = "nav-item">
+                <div class="div-social-media">
+                    <a href = "mailto:garciamatheus27@gmail.com" class="social-media"><i class="fa-solid fa-envelope" title="Gmail" id = "logo"></i></a>
+                    <a href = "https://twitter.com/eusougarcia" target="_blank" class = "social-media"><i class="fa-brands fa-twitter" title="Twitter" id = "logo"></i></a>
+                    <a href = "https://www.instagram.com/eusougarcia/" target="_blank" class = "social-media"><i class="fa-brands fa-instagram" title="Instagram" id = "logo"></i></a>
+                    <a href = "https://br.linkedin.com" target="_blank" class = "social-media"><i class="fa-brands fa-linkedin" title="Linkedin" id = "logo"></i></a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div class="header">
+        <h1>{%block TextoHeader%}{%block nomeUsuario%}{%endblock%}{%endblock%}</h1>
+    </div>
+    <main>
+    {%block conteudo%}{%endblock%}
+    </main>
+</body>
+</html>

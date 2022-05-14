@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt_BR" id = #Login>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'Paginas/Login.css' %}">
+</head>
+<body>
+    <div class="logo">
+        <img src="{% static 'imagens/Lmg arts.png' %}">
+    </div>
+
+    <div class="center">
+        <!--action, indica para onde deseja mandar o formulario-->
+        <form method="POST">
+            {%csrf_token%}
+            <section>
+                <h1>Login</h1>
+                <p>Insira os dados</p>
+                    <div class="login">
+                        <label for="Email">Email:</label>
+                        <input type="email" id="email" name="email" required placeholder="Ex:email@email.com" class = "email">
+                    </div>
+                    <div class="login">
+                        <label for="Senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" required placeholder="Digite sua senha" class = 'senha'>
+                        <img src = '{% static "imagens/olho-aberto.png" %}' class = 'btn'>
+                    </div>
+                    {% if messages %}
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                {% for message in messages %}
+                            <strong>ERRO!</strong> {{message}} {{messages.tags}}
+                                {% endfor %}
+                        </div>
+                        <br>
+                    {% endif %}
+                    <input type ="submit" value = "login">
+                    <div class="cadastro">
+                        Ainda não tem cadastro? <a href="{% url 'Cadastro' %}">Cadastre-se</a>
+                    </div>
+                    <div class="cadastro">
+                        Esqueci minha <a href="{% url 'RedefinicaoSenha' %}">senha</a>
+                    </div>
+                    <div class = "cadastro">
+                        <a href="{% url 'landingPage' %}" class="voltar">Voltar</a>
+                    </div>
+            </section>
+        </form>
+    </div>
+
+</body>
+   <script>
+        const senha = document.querySelector('.senha');
+        const btn = document.querySelector('.btn');
+
+        btn.onclick = () =>
+        {
+            if (senha.type === 'password')
+            {
+                senha.type = 'text'
+                console.log('Active')
+                btn.src = "{% static 'imagens/olho-fechado.png' %}"
+            }
+            else
+            {
+                btn.src = "{% static 'imagens/olho-aberto.png' %}"
+                senha.type = 'password'
+            }
+        }
+    </script>
+</html>

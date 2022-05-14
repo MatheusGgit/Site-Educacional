@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adquirir Curso</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
+    <link href = "{% static 'Paginas/ComprarCursos.css' %}" rel = "stylesheet">
+    <script src="https://kit.fontawesome.com/ba25beb2a7.js"></script>
+</head>
+
+<body>
+    <nav class="BN">
+        <ul class="Nav-BN">
+            <li class="logo">
+                <a href="Site_Educacional.html" class="logo-nav">
+                    <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo">
+                </a>
+                <span class = "texto-logo">LMG ARTS</span>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'Site_Educacional' %}" class="link-nav">
+                    <i class="fa-solid fa-house-user" id = "logo"></i>
+                    <span class="link-text">Página inicial</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'Perfil' %}" class="link-nav">
+                    <i class="fa-solid fa-user" id = "logo"></i>
+                    <span class="link-text">Perfil</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'MeuAprendizado' %}" class="link-nav">
+                    <i class="fa-solid fa-book-open-reader" id = "logo"></i>
+                    <span class="link-text">Meu Aprendizado</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'Catalogo' %}" class="link-nav">
+                    <i class="fa-solid fa-bag-shopping" id = "logo"></i>
+                    <span class="link-text">Catálogo</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'Logout' %}" class="link-nav">
+                    <i class="fa-solid fa-arrow-right-from-bracket" id="logo"></i>
+                    <span class="link-text">Sair</span>
+                </a>
+            </li>
+
+            <li class = "nav-item">
+                <div class="div-social-media">
+                    <a href = "mailto:garciamatheus27@gmail.com" class="social-media"><i class="fa-solid fa-envelope" title="Gmail" id = "logo"></i></a>
+                    <a href = "https://twitter.com/eusougarcia" target="_blank" class = "social-media"><i class="fa-brands fa-twitter" title="Twitter" id = "logo"></i></a>
+                    <a href = "https://www.instagram.com/eusougarcia/" target="_blank" class = "social-media"><i class="fa-brands fa-instagram" title="Instagram" id = "logo"></i></a>
+                    <a href = "https://br.linkedin.com" target="_blank" class = "social-media"><i class="fa-brands fa-linkedin" title="Linkedin" id = "logo"></i></a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <header class="header">
+        <h1>Cursos</h1>
+    </header>
+
+    <section class="maingrid">
+        <div>
+            {% if Cursos.foto %}
+                {% if messages %}
+                    <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {% for message in messages %}
+                                {% if messages.message == 'Curso já adquirido!' %}
+                                    <strong>ERRO!</strong> {{messages}} {{messages.tags}}
+                                {% else %}
+                                    <strong>SUCESSO!</strong> {{message}} {{messages.tags}}
+                                {%endif%}
+                            {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="imagem" style="background-image: url({{Cursos.foto.url}}); background-size: cover; background-repeat: no-repeat;background-position:center;">
+            {%else%}
+                <div class="imagem" style="background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg); background-size: cover; background-repeat: no-repeat;background-position:center;">
+            {% endif %}
+            </div>
+            <div class= "barra">
+                <form method = "POST">
+                    {% csrf_token %}
+                    <input class = "btn" type = "submit" value="Adquirir curso">
+                </form>
+                <div class="fonte-info">
+                    <h2 class = "fonte">Fonte: </h2>
+                    <a href="{{Cursos.linkFonte}}" target="_blank" class = "fonte-redirect">{{Cursos.fonte}}</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="InfoConteudo">
+            <div class="Info1">
+                <h2 class = "Info-Title">Nome do Curso</h2>
+                <p class = "Info-Text">
+                   {{Cursos.nome}}
+                </p>
+            </div>
+            <div class="Info2">
+                <h2 class = "Info-Title">Descrição</h2>
+                <p class = "Info-Text">
+                    {{Cursos.descricao}}
+                </p>
+            </div>
+            <div class="Info3">
+                <h2 class = "Info-Title">Mais Informações</h2>
+                <p class = "Info-Text">
+                    Total de Horas: {{Cursos.horas|date:'h:i'}}<br>
+                    Preço: R$: 00,00<br>
+                    Quantidade Aulas: {{Cursos.aulas}}<br>
+                </p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

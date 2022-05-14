@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação</title>
+    <link rel="stylesheet" href="{% static 'Paginas/redefinicao.css' %}">
+</head>
+<body>
+    <div class="center">
+        <!--action, indica para onde deseja mandar o formulario-->
+        <form method="POST">
+            {% csrf_token %}
+            <section>
+                <h1>Digite seu email para a recuperação senha:</h1>
+                    <div class="recuperar">
+                        <input type="email" id="email" name="email" required placeholder="Ex:email@email.com">
+                        <input type ="submit" value = "Enviar">
+                        {% if messages %}
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            {% for message in messages %}
+                                <strong>ERRO!</strong> {{message}} {{messages.tags}}
+                            {% endfor %}
+                        </div>
+                        <br>
+                        {% endif %}
+                    </div>
+                    <div class="cadastro">
+                        <a href="{% url 'index' %}" class="voltar">Voltar</a>
+                    </div>
+            </section>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt_BR" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aulas</title>
+    <link rel="stylesheet" href="{% static 'Paginas/PlayerVideo.css' %}">
+</head>
+<body>
+    <div class = "header">
+        <a href = "{% url 'MeuAprendizado' %}" style="text-decoration: none;">
+            <h2 class = "titulo" title = "Voltar">{{Cursos.nome}}</h2>
+        </a>
+    </div>
+
+    <section class="main">
+
+        <div class="main-video">
+            <div class="Video">
+                {% if Videos.video.url %}
+                    <video controls class = "videoFrame" id = "myvideo"></video>
+                {% else %}
+                    <video controls autoplay>
+                        <source src = "/media/videos/2022/loading.mp4">
+                    </video>
+                {% endif %}
+            </div>
+            <div class = "info">
+                <h3 class="titulo">{{Cursos.nome}}</h3>
+                <h3 class = "info-text">Info:</h3>
+                <div class = "Desc">
+                    {{Cursos.descricao}}
+                </div>
+            </div>
+        </div>
+        <div class="playlist">
+            {% for video in Videos %}
+            <a class = "btn" id = "{{video.video.url}}">
+                <div class="videos">
+                    <input type = "checkbox" value="visto" class = "cb" id = "{{video.video.url}}">
+                    <h2 class = "titulo">
+                        {{video.nomeAula}}
+                    </h2>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+<script>
+let video = document.querySelector('video');
+video.ontimeupdate = function() {videoTracking()};
+let cb = document.querySelector('.cb');
+
+document.querySelectorAll('.btn').forEach(btn =>
+{
+  btn.addEventListener('click', event =>
+  {
+    let url = btn.getAttribute('id');
+    video.src = url;
+  })
+})
+
+function videoTracking()
+{
+    videoPercentage = (video.duration * 90) / 100;
+    if(video.currentTime >= videoPercentage)
+    {
+        cb.checked = true;
+    }
+}
+</script>
+</html>

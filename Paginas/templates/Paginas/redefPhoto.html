@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redefinição de descrição</title>
+    <link rel="stylesheet" href="{% static 'Paginas/redefPhoto.css' %}">
+</head>
+<body>
+    <main class = "main">
+        <form method = "POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type = "file" accept="image/*" name = "foto">
+            <input type = "submit" value = "Enviar">
+        </form>
+    </main>
+</body>
+</html>

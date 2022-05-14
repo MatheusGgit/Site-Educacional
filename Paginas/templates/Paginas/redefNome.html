@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redefinição de Nome</title>
+    <link rel="stylesheet" href="{% static 'Paginas/redefNome.css' %}">
+</head>
+<body>
+    <main class = "main">
+        <form method = "POST">
+            {% csrf_token %}
+            <input placeholder="Digite seu nome" class = "nome" id = "nome" name = "nome">
+            <input type = "submit" value = "Enviar">
+        </form>
+    </main>
+</body>
+</html>

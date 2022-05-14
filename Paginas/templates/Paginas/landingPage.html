@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt_BR" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMG'arts</title>
+    <link href="{% static 'Paginas/landingPage.css' %}" rel="stylesheet">
+    <!-- <style>
+        @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+    </style> -->
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Quicksand:wght@500&display=swap');
+    </style>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Oswald:wght@600&family=Quicksand:wght@500&display=swap');
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="quadrado">
+            <div class="icone">
+                <img src="{% static 'imagens/mini-logo.jpeg' %}">
+            </div>
+        </div>
+        <div class="quadrado" id = "quadrado">
+            <div>
+                <a href="{% url 'Cadastro' %}"><button>Cadastrar</button></a>
+                <a href="{% url 'index' %}"><button>Login</button></a>
+            </div>
+        </div>
+    </header>
+
+    <div class="ImgVertice">
+        <img src="{% static 'imagens/Imagem vertice.png' %}">
+        <img src="{% static 'imagens/Imagem vertice 2.png' %}">
+    </div>
+
+    <div class="bloco1">
+        <div class="img1">
+            <img src="{% static 'imagens/logo.png' %}">
+        </div>
+        <div class="TituloCentral">
+           <h1><strong>BEM VINDO A LMG'arts</strong></h1>
+        </div>
+    </div>
+
+    <div class="bloco2">
+        <div class="text">
+            <h2><strong>Aqui pode aprender arte do jeito mais pratico e rapido, então cadastre-se agora na <a class="lmg" href = "#quadrado" style="text-decoration: none;">LMG'arts</a></h2>
+        </div>
+        <div class="img2">
+            <img src="{% static 'imagens/Design_sem_nome-removebg-preview.png' %}">
+        </div>
+    </div>
+
+    <div class="bloco3">
+        <div class="img3">
+            <img src="{% static 'imagens/Design_sem_nome__1_-removebg-preview.png' %}">
+        </div>
+        <div class="info1">
+            <h3><strong>Sobre nós</strong></h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque quasi eum ducimus laudantium ratione
+                voluptate fugit eveniet temporibus, asperiores iusto recusandae perferendis impedit
+                veritatis at laboriosam eligendi deleniti mollitia a Lorem ipsum dolor sit amet consectetur, adipisicing
+                elit. Voluptatum minima neque totam vel distinctio sint, voluptas voluptatibus expedita maiores soluta!
+                Placeat repellendus provident maiores sit laborum quod, molestias ad labore. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequatur nihil neque,
+                dolorum modi architecto illo velit ullam maxime, dolor in pariatur, porro tempora quibusdam officiis quas veritatis repudiandae laudantium corporis!
+            </p>
+        </div>
+    </div>
+
+    <div class="bloco4">
+        <div class="info2">
+            <h3><strong>Cursos da plataforma</strong></h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque quasi eum ducimus laudantium ratione
+                voluptate fugit eveniet temporibus, asperiores iusto recusandae perferendis impedit
+                veritatis at laboriosam eligendi deleniti mollitia a Lorem ipsum dolor sit amet consectetur, adipisicing</p>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate neque minus, omnis earum impedit fuga obcaecati debitis sit provident quis perferendis beatae eius facilis nostrum necessitatibus reprehenderit magni vero.</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate neque minus, omnis earum impedit fuga obcaecati debitis sit provident quis perferendis beatae eius facilis nostrum necessitatibus reprehenderit magni vero.</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate neque minus, omnis earum impedit fuga obcaecati debitis sit provident quis perferendis beatae eius facilis nostrum necessitatibus reprehenderit magni vero.</li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptate neque minus, omnis earum impedit fuga obcaecati debitis sit provident quis perferendis beatae eius facilis nostrum necessitatibus reprehenderit magni vero.</li>
+                </ul>
+        </div>
+        <div class="img4">
+            <img src="{% static 'imagens/Imagem 4.gif' %}">
+        </div>
+    </div>
+
+    <footer>
+        <div class="rodapé">
+            rodapé
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href = '{% static "Paginas/Cadastro.css" %}' rel = "stylesheet">
+</head>
+<body>
+    <div class="centro">
+        <!--action, indica para onde deseja mandar o formulario-->
+        <form method="POST">
+            {% csrf_token %}
+            <section>
+                <h1>Cadastro</h1>
+                <p>Complete todos os campos abaixo</p>
+                    <div class="Cadastro">
+                        <label>Nome completo:</label>
+                        <input type="text" name="nome" placeholder="Seu nome" class = "nome">
+                    </div>
+                    <div class="Cadastro">
+                        <label>Email:</label>
+                        <input type = "email" name = "email" class = "form-control" placeholder="Ex: email@email.com">
+                    </div>
+                    <div class="Cadastro">
+                        <label>Senha:</label>
+                        <input type="password" name="senha" required placeholder="Digite sua senha" class = 'senha'>
+                        <img src = '{% static "imagens/olho-aberto.png" %}' class = 'btn'>
+                    </div>
+                    <div class="Cadastro">
+                        <label>Confirmar Senha:</label>
+                        <input type="password" name="senha2" required placeholder="Digite sua senha" class = 'senha2'>
+                        <img src = '{% static "imagens/olho-aberto.png" %}' class = 'btn2'>
+                    </div>
+                    {% if messages %}
+                        <div class="alert">
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                {% for message in messages %}
+                            <strong>ERRO!</strong> {{message}} {{messages.tags}}
+                                {% endfor %}
+                        </div>
+                        <br>
+                    {% endif %}
+                    <input type ="submit" value = "Enviar">
+                    <div class="cadastro">
+                        <a href="{% url 'landingPage' %}" class="voltar">Voltar</a>
+                    </div>
+            </section>
+        </form>
+    </div>
+
+</body>
+    <script>
+        const senha = document.querySelector('.senha');
+        const btn = document.querySelector('.btn');
+        const senha2 = document.querySelector('.senha2');
+        const btn2 = document.querySelector('.btn2');
+
+        btn.onclick = () =>
+        {
+            if (senha.type === 'password')
+            {
+                senha.type = 'text'
+                console.log('Active')
+                btn.src = "{% static 'imagens/olho-fechado.png' %}"
+            }
+            else
+            {
+                btn.src = "{% static 'imagens/olho-aberto.png' %}"
+                senha.type = 'password'
+            }
+        }
+
+        btn2.onclick = () =>
+        {
+            if (senha2.type === 'password')
+            {
+                senha2.type = 'text'
+                console.log('Active')
+                btn2.src = "{% static 'imagens/olho-fechado.png' %}"
+            }
+            else
+            {
+                btn2.src = "{% static 'imagens/olho-aberto.png' %}"
+                senha2.type = 'password'
+            }
+        }
+    </script>
+</html>
