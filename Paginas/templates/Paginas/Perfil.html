@@ -9,7 +9,7 @@
     <div class="info">
         {% if Usuarios.foto %}
             <div id="cf">
-              <img class="bottom" src="/media/fotos/2022/05/editProfilePic.png"/>
+              <img class="bottom" src="/media/fotos/2022/05/editProfilePic.png" />
               <a href = "{% url 'redefPhoto' %}"><img class="top" src="{{Usuarios.foto.url}}" /></a>
             </div>
         {% else %}
