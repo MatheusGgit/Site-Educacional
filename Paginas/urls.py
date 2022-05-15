@@ -18,4 +18,5 @@ urlpatterns = [
     path('RedefiniçãoNome', views.redefNome, name='redefNome'),
     path('RedefiniçãoDescrição', views.redefDesc, name='redefDesc'),
     path('RedefiniçãoFoto', views.redefPhoto, name='redefPhoto'),
+    path('teste', views.testeFiltro, name='teste'),
 ]

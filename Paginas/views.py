@@ -81,11 +81,12 @@ def redefNome(request):
     if not request.session['login']:
         return redirect('landingPage')
     else:
+        email = request.session['email']
+        user = get_object_or_404(Usuarios, email=email)
         if request.method != 'POST':
-            return render(request, 'Paginas/redefNome.html')
+            return render(request, 'Paginas/redefNome.html', {'Usuarios': user})
         else:
             nome = request.POST.get('nome')
-            email = request.session['email']
             Usuarios.objects.filter(email=email).update(nome=nome)
 
             return redirect('Perfil')
@@ -94,11 +95,12 @@ def redefDesc(request):
     if not request.session['login']:
         return redirect('landingPage')
     else:
+        email = request.session['email']
+        user = get_object_or_404(Usuarios, email=email)
         if request.method != 'POST':
-            return render(request, 'Paginas/redefDesc.html')
+            return render(request, 'Paginas/redefDesc.html', {'Usuarios': user})
         else:
             desc = request.POST.get('desc')
-            email = request.session['email']
             Usuarios.objects.filter(email=email).update(descricao = desc)
 
             return redirect('Perfil')
@@ -107,11 +109,11 @@ def redefPhoto(request):
     if not request.session['login']:
         return redirect('landingPage')
     else:
+        email = request.session['email']
         if request.method != 'POST':
             return render(request, 'Paginas/redefPhoto.html')
         else:
-            uploaded_file = request.FILES['foto']
-            email = request.session['email']
+            uploaded_file = request.FILES['asgnmnt_file']
             user = Usuarios.objects.filter(email = email).update(foto = f'/fotos/2022/05/{uploaded_file}')
             return redirect('Perfil')
 
@@ -239,3 +241,6 @@ def busca(request):
     )
     # return render(request, 'Paginas/busca.html')
     return render(request, 'Paginas/busca.html', {'Cursos': cursos})
+
+def testeFiltro(request):
+    return render(request, 'Paginas/teste_filtro.html')

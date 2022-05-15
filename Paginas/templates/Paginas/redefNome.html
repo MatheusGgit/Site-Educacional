@@ -1,18 +1,55 @@
-<!DOCTYPE html>
+{%extends 'base.html'%}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Redefinição de Nome</title>
-    <link rel="stylesheet" href="{% static 'Paginas/redefNome.css' %}">
-</head>
-<body>
-    <main class = "main">
-        <form method = "POST">
-            {% csrf_token %}
-            <input placeholder="Digite seu nome" class = "nome" id = "nome" name = "nome">
-            <input type = "submit" value = "Enviar">
-        </form>
-    </main>
-</body>
-</html>
+
+{%block id%}<html lang="en" id = "perfil">{%endblock%}
+{%block TextoHeader%}Perfil{%endblock%}
+{%block title%}Perfil{%endblock%}
+{%block conteudo%}
+<div class="mainContent">
+    <div class="info">
+        {% if Usuarios.foto %}
+            <div id="cf">
+              <img class="bottom" src="/media/fotos/2022/05/editProfilePic.png" />
+              <a href = "{% url 'redefPhoto' %}"><img class="top" src="{{Usuarios.foto.url}}" /></a>
+            </div>
+        {% else %}
+            <div id="cf">
+              <img class = "bottom" src = "/media/fotos/2022/05/editProfilePic.png">
+              <a href = "{% url 'redefPhoto' %}"><img class="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" /></a>
+            </div>
+        {%endif%}
+
+        <div class = "userName">
+            <form method = "POST">
+                {% csrf_token %}
+                <input placeholder="Digite seu nome" class = "nome" id = "nome" name = "nome">
+                <input type = "submit" value = "Enviar">
+            </form>
+        </div>
+        <div>
+            <br>
+            <div class = "account-info">
+                <div class = "desc">
+                    <h2>Descrição:</h2>
+                        {% if Usuarios.descricao %}
+                            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
+                                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição" style = "margin-left: 25rem;"></i>
+                            </a>
+                            <h3>{{Usuarios.descricao}}</h3>
+                        {% else %}
+                            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
+                                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição" style = "margin-left: 25rem;"></i>
+                            </a>
+                            <h4>Usuário não possui descrição</h4>
+                        {% endif %}
+                </div>
+            </div>
+            <ul class = "infos">
+                <h1 class = "left">Meu email: {{Usuarios.email}}</h1>
+                <h1 class = "right">Criado em: {{Usuarios.data_criacao|date:'d/m/y H:m'}}</h1>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+{%endblock%}

@@ -1,18 +1,48 @@
-<!DOCTYPE html>
+{%extends 'base.html'%}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Redefinição de descrição</title>
-    <link rel="stylesheet" href="{% static 'Paginas/redefDesc.css' %}">
-</head>
-<body>
-    <main class = "main">
-        <form method = "POST">
-            {% csrf_token %}
-            <input placeholder="Digite sua nova descrição" class = "desc" id = "desc" name = "desc">
-            <input type = "submit" value = "Enviar">
-        </form>
-    </main>
-</body>
-</html>
+
+{%block id%}<html lang="en" id = "perfil">{%endblock%}
+{%block TextoHeader%}Perfil{%endblock%}
+{%block title%}Perfil{%endblock%}
+{%block conteudo%}
+<div class="mainContent">
+    <div class="info">
+        {% if Usuarios.foto %}
+            <div id="cf">
+              <img class="bottom" src="/media/fotos/2022/05/editProfilePic.png" />
+              <a href = "{% url 'redefPhoto' %}"><img class="top" src="{{Usuarios.foto.url}}" /></a>
+            </div>
+        {% else %}
+            <div id="cf">
+              <img class = "bottom" src = "/media/fotos/2022/05/editProfilePic.png">
+              <a href = "{% url 'redefPhoto' %}"><img class="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" /></a>
+            </div>
+        {%endif%}
+
+        <div class = "userName">
+            <a href = "{% url 'redefNome' %}" style="text-decoration: none;">
+                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Mudar nome" style = "margin-left: 15rem;"></i>
+            </a>
+            <h2 style="margin-top: 0px;">{{ Usuarios.nome }}</h2>
+        </div>
+        <div>
+            <br>
+            <div class = "account-info">
+                <div class = "desc">
+                    <h2>Descrição:</h2>
+                    <form method = "POST">
+                        {% csrf_token %}
+                        <input placeholder="Digite sua nova descrição" class = "desc" id = "desc" name = "desc">
+                        <input type = "submit" value = "Enviar">
+                    </form>
+                </div>
+            </div>
+            <ul class = "infos">
+                <h1 class = "left">Meu email: {{Usuarios.email}}</h1>
+                <h1 class = "right">Criado em: {{Usuarios.data_criacao|date:'d/m/y H:m'}}</h1>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+{%endblock%}
