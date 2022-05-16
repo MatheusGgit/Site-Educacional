@@ -243,4 +243,5 @@ def busca(request):
     return render(request, 'Paginas/busca.html', {'Cursos': cursos})
 
 def testeFiltro(request):
+
     return render(request, 'Paginas/teste_filtro.html')
