@@ -1,17 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.validators import validate_email
-from django.contrib import auth, messages
+from django.contrib import messages
 from .services.auth import Authentication
 from .services.redefinicao_email_auth import Authentication_email, Email_Redef
 from .services.cursosAuth import userCursos
 from hashlib import *
-from django.http import Http404
-from django.core.paginator import Paginator
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
-from django.core.files.storage import FileSystemStorage
 from .models import Usuarios, Cursos, Video
-from .forms import UsuariosForm
 
 
 # Páginas - não é possível acessar sem estar logado
