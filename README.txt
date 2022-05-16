@@ -1,0 +1,1 @@
+Site educacional feito para estudos, básico com integração com banco de dados
