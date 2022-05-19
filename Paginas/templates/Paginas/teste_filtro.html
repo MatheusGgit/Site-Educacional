@@ -2,10 +2,9 @@
 {% load static %}
 <html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <title>Title</title>
-   <link rel="stylesheet" href="{% static 'Paginas/teste.css' %}">
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="{% static 'Paginas/teste.css' %}">
 </head>
 <body>
 <div id="myBtnContainer">
@@ -34,8 +33,10 @@
 </div>
 </body>
 <script>
-   filterSelection("all")
-function filterSelection(c) {
+
+filterSelection("all")
+function filterSelection(c)
+{
   var x, i;
   x = document.getElementsByClassName("filterDiv");
   if (c == "all") c = "";

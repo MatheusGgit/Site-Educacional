@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinição de senha</title>
     <link rel="stylesheet" href="{% static 'Paginas/recuperacao.css' %}">
+    <link rel="shortcut icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
+    <link rel="icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
 </head>
 <body>
     <div class="center">
@@ -15,13 +17,17 @@
             {% csrf_token %}
             <section>
                 <h1>Ensira sua nova senha:</h1>
+                <br>
+                <span style="color: #7F8487; text-align: center; font-size: 15px; margin-left: 0.5rem;">
+                     Senhas devem conter mais de 6 caracteres
+                 </span>
                     <div class="SenhaNova">
                         <label for="Senha">Nova Senha:</label>
                         <input type="password" id="senha" name="senha" required  placeholder="Digite sua nova senha" class = "senha">
                         <img src = '{% static "imagens/olho-aberto.png" %}' class = 'btn'>
                     </div>
                     <div class="SenhaNova">
-                        <label for="Senha2">Senha:</label>
+                        <label for="Senha2">Confirmar senha:</label>
                         <input type="password" id="senha2" name="senha2" required placeholder="Digite novamente" class = "senha2">
                         <img src = '{% static "imagens/olho-aberto.png" %}' class = 'btn2'>
                     </div>
@@ -39,10 +45,8 @@
                         <a href="{% url 'index' %}" class="voltar">Voltar</a>
                     </div>
             </section>
-            </section>
         </form>
     </div>
-
 </body>
 <script>
     const senha = document.querySelector('.senha');

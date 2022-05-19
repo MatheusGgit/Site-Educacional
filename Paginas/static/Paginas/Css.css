@@ -292,7 +292,7 @@ body
     padding-right: 10px;
 }
 
-.cursox
+.filterDiv
 {
     filter: grayscale(100%);
     position: relative;
@@ -302,12 +302,18 @@ body
     width: 50vh;
     background-color: #80a4f3;
     flex-direction: row;
+    display: none;
 }
 
-.cursox:hover
+.filterDiv:hover
 {
     filter: grayscale(0%);
     transition: 200ms;
+}
+
+.show
+{
+    display: block;
 }
 
 .busca
@@ -442,8 +448,8 @@ body
 #catalogo body
 {
     /*background: #2A2A2A;*/
-    /*background: #fff;*/
-    background: linear-gradient(120deg, rgb(113 235 220)/*#700B97*/, #85bded, #212cbd)
+    background: #fff;
+    /*background: linear-gradient(120deg, rgb(113 235 220)!*#700B97*!, #85bded, #212cbd)*/
 }
 
 .btn {

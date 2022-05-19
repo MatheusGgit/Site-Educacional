@@ -17,6 +17,7 @@ class Usuarios(models.Model):
 class Categoria(models.Model):
     categoriaCurso = models.CharField(max_length = 55)
 
+
     def __str__(self):
         return self.categoriaCurso
 

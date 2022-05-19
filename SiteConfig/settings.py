@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Paginas.apps.PaginasConfig',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

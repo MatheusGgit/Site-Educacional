@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link href = '{% static "Paginas/Cadastro.css" %}' rel = "stylesheet">
+    <link rel="shortcut icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
+    <link rel="icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
 </head>
 <body>
     <div class="centro">
@@ -16,6 +18,10 @@
             <section>
                 <h1>Cadastro</h1>
                 <p>Complete todos os campos abaixo</p>
+                <br>
+                 <span style="color: #7F8487; font-size: 15px;">
+                     Senhas devem conter mais de 6 caracteres
+                 </span>
                     <div class="Cadastro">
                         <label>Nome completo:</label>
                         <input type="text" name="nome" placeholder="Seu nome" class = "nome">
