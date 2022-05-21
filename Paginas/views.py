@@ -237,8 +237,3 @@ def busca(request):
     )
     # return render(request, 'Paginas/busca.html')
     return render(request, 'Paginas/busca.html', {'Cursos': cursos})
-
-
-# TESTE - NÃO FAZ PARTE DO SISTEMA
-def testeFiltro(request):
-    return render(request, 'Paginas/teste_filtro.html')
