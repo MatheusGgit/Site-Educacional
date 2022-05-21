@@ -249,7 +249,7 @@ body::-webkit-scrollbar-thumb{
 
 .ImgVertice2 img{
 
-    width: 18.5%;
+    width: 18%;
 }
 
 
@@ -266,13 +266,13 @@ body::-webkit-scrollbar-thumb{
     /* margin-bottom: 20px; */
 }
 
-.rodapeicon img:hover{
+.rodapeicon a img:hover{
     cursor: pointer;
-    border: 5px solid rgb(0, 154, 243);
+    border: 3px solid rgb(0, 154, 243);
     transition: 0.2s;
 }
 
-.rodapeicon img{
+.rodapeicon a img{
     border-radius: 12px;
 }
 
@@ -299,4 +299,29 @@ body::-webkit-scrollbar-thumb{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5), 0 6px 20px 0 rgba(0,0,0,0.6);
 }
 
+.voltarBtn
+{
+    position: fixed;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background: #fff;
+    top: 83%;
+    right: 1%;
+    color: black;
+    text-align: center;
+    align-items: center;
+}
 
+.voltarBtn:hover
+{
+    transition: 200ms;
+    border: solid 4px rgb(0, 154, 243);
+}
+
+.voltarBtnText
+{
+    margin-left: 25%;
+    margin-top: 22%;
+    width: 50%;
+}

@@ -10,22 +10,35 @@
     <div class = 'cursos'>
         {% for curso in Cursos %}
                 <a href="{% url 'PlayerVideo' curso.id %}">
-                    <div class = "cursox" style="background-image: url({{curso.foto.url}});
-                                                background-repeat: no-repeat;
-                                                background-size: cover;
-                                                background-position: center;">
-                        <div class = "curso-zindex">
-                            <p class = "curso-info">Nome:</p>
-                            <p class = "curso-info">{{curso.nome}}</p>
+                   {% if curso.foto %}
+                        <div class = "cursox" style="background-image: url({{curso.foto.url}});
+                                                                                background-repeat: no-repeat;
+                                                                                background-size: cover;
+                                                                                background-position: center;">
+                            <div class = "curso-zindex">
+                                <p class = "curso-info">Nome:</p>
+                                <p class = "curso-info">{{curso.nome}}</p>
+                            </div>
                         </div>
-                    </div>
+                   {% else %}
+                        <div class = "cursox" style="
+                                                    background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
+                                                    background-repeat: no-repeat;
+                                                    background-size: cover;
+                                                    background-position: center;">
+                            <div class = "curso-zindex">
+                                <p class = "curso-info">Nome:</p>
+                                <p class = "curso-info">{{curso.nome}}</p>
+                            </div>
+                        </div>
+                   {% endif %}
                 </a>
         {% endfor %}
     </div>
 {% else %}
-    <center>
+    <div style="text-align: center;">
         <img src = "https://cdn-icons-png.flaticon.com/512/3721/3721746.png" width="10%" style="margin-top: 10rem; filter: opacity(25%);">
         <h4 style="color: #949494;">Parece que você não possui nenhum curso</h4>
-    </center>
+    </div>
 {% endif %}
 {%endblock%}

@@ -110,7 +110,7 @@ def redefPhoto(request):
             return render(request, 'Paginas/redefPhoto.html')
         else:
             uploaded_file = request.FILES['asgnmnt_file']
-            user = Usuarios.objects.filter(email = email).update(foto = f'/fotos/2022/05/{uploaded_file}')
+            user = Usuarios.objects.filter(email = email).update(foto = f'fotos/2022/05/{uploaded_file}')
             return redirect('Perfil')
 
 

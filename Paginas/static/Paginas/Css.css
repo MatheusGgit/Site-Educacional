@@ -279,21 +279,10 @@ body
 #cf img.top:hover {
     opacity: 50%;
 }
-.cursos
-{
-    width: auto;
-    border-radius: 10px;
-    background-color: #e3e3eb;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, auto));
-    gap: 0.5%;
-    margin-right: 15px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-}
 
-.filterDiv
+.cursox
 {
+    float: left;
     filter: grayscale(100%);
     position: relative;
     border-radius: 2%;
@@ -302,29 +291,15 @@ body
     width: 50vh;
     background-color: #80a4f3;
     flex-direction: row;
-    display: none;
 }
 
-.filterDiv:hover
+.cursox:hover
 {
+    float: left;
     filter: grayscale(0%);
     transition: 200ms;
 }
 
-.show
-{
-    display: block;
-}
-
-.busca
-{
-    width: 99%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, auto));
-    margin-bottom: 4%;
-    border-radius: 10px;
-    padding: 10px;
-}
 
 #informacao .equipe img
 {
@@ -391,26 +366,6 @@ body
     display: none;
 }
 
-.curso-zindex
-{
-    position: absolute;
-    bottom: 0px;
-    background: black;
-    border-radius: 7px;
-    height: 25%;
-    width: 100%;
-    align-content: flex-end;
-    justify-content: space-between;
-    filter: opacity(80%);
-}
-
-.curso-info
-{
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: #fff;
-}
-
 
 .banner {
     border-radius: 15px;
@@ -452,27 +407,101 @@ body
     /*background: linear-gradient(120deg, rgb(113 235 220)!*#700B97*!, #85bded, #212cbd)*/
 }
 
-.btn {
-    border: solid 0.5px;
-    border-radius: 5px;
-    outline: none;
-    padding: 12px 16px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-    margin-bottom: 1rem;
-}
 
-/* Add a light grey background on mouse-over */
-.btn:hover {
-  background-color: #ddd;
-}
+/* Catálogo */
+/* {        */
+    .btn:hover {
+      background-color: #ddd;
+    }
 
-/* Add a dark background to the active button */
-.btn.active {
-  background-color: #054ba7;
-  color: white;
-  height: 3rem;
-}
+    .btn.active {
+      background-color: #054ba7;
+      color: white;
+      height: 3rem;
+    }
+
+    .btn {
+        border: solid 0.5px;
+        border-radius: 5px;
+        outline: none;
+        padding: 12px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        margin-bottom: 1rem;
+    }
+
+    .cursos
+    {
+        overflow: hidden;
+        width: auto;
+        border-radius: 10px;
+        background-color: #e3e3eb;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(310px, auto));
+        gap: 0.5%;
+        margin-right: 15px;
+        padding-bottom: 10px;
+        padding-right: 10px;
+    }
+
+    .hrefCurso
+    {
+        display: none;
+    }
 
 
+    .filterDiv
+    {
+        float: left;
+        filter: grayscale(100%);
+        /*position: relative;*/
+        border-radius: 2%;
+        height: 50vh;
+        margin: 20px;
+        width: 50vh;
+        background-color: #80a4f3;
+        flex-direction: row;
+        display: none;
+    }
 
+    .filterDiv:hover
+    {
+        filter: grayscale(0%);
+        transition: 200ms;
+    }
+
+    .show
+    {
+        display: flex;
+    }
+
+    .busca
+    {
+        width: 99%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(310px, auto));
+        margin-bottom: 4%;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .curso-zindex
+    {
+        position: absolute;
+        bottom: 0px;
+        background: black;
+        border-radius: 7px;
+        height: 25%;
+        width: 100%;
+        align-content: flex-end;
+        justify-content: space-between;
+        filter: opacity(80%);
+    }
+
+    .curso-info
+    {
+        margin-left: 1.5rem;
+        text-decoration: none;
+        color: #fff;
+    }
+/* }        */

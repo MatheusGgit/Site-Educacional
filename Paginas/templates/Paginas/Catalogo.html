@@ -29,17 +29,31 @@
 {% if Cursos %}
 <div class = 'cursos'>
     {% for curso in Cursos %}
-        <a href="{% url 'ComprarCurso' curso.id %}">
-            <div class = "filterDiv {{curso.categoriaID}}" style="background-image: url({{curso.foto.url}});
-                                                                    background-repeat: no-repeat;
-                                                                    background-size: cover;
-                                                                    background-position: center;">
-                <div class = "curso-zindex">
-                    <p class = "curso-info">Nome:</p>
-                    <p class = "curso-info">{{curso.nome}}</p>
+            {% if curso.foto %}
+                <a href="{% url 'ComprarCurso' curso.id %}" class = "hrefCurso {{curso.categoriaID}}">
+                    <div class = "filterDiv {{curso.categoriaID}}" style="background-image: url({{curso.foto.url}});
+                                                                            background-repeat: no-repeat;
+                                                                            background-size: cover;
+                                                                            background-position: center; display: block">
+                        <div class = "curso-zindex">
+                            <p class = "curso-info">Nome:</p>
+                            <p class = "curso-info">{{curso.nome}}</p>
+                        </div>
+                    </div>
+                </a>
+            {% else %}
+                <div class = "filterDiv {{curso.categoriaID}}" style="
+                                                                background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
+                                                                background-repeat: no-repeat;
+                                                                background-size: cover;
+                                                                background-position: center;">
+                    <div class = "curso-zindex">
+                        <p class = "curso-info">Nome:</p>
+                        <p class = "curso-info">{{curso.nome}}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
+            {% endif %}
+<!--        </a>-->
     {% endfor %}
 </div>
 {% else %}
@@ -54,7 +68,7 @@ filterSelection("all")
 function filterSelection(c)
 {
   var x, i;
-  x = document.getElementsByClassName("filterDiv");
+  x = document.getElementsByClassName("hrefCurso");
   if (c == "all") c = "";
   // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
   for (i = 0; i < x.length; i++) {

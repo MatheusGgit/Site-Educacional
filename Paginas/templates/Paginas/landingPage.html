@@ -9,6 +9,7 @@
     <link href="{% static 'Paginas/landingPage.css' %}" rel="stylesheet">
     <link rel="shortcut icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
     <link rel="icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/ba25beb2a7.js"></script>
     <!-- <style>
         @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
     </style> -->
@@ -20,11 +21,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Oswald:wght@600&family=Quicksand:wght@500&display=swap');
     </style>
-    <link rel="stylesheet"
-          href="../../../../../OneDrive/Área de Trabalho/Landign page/Landign page/CSS.css/ladignPage.css">
 </head>
 <body>
-
     <header>
         <div class="quadrado">
             <div class="icone">
@@ -39,6 +37,11 @@
         </div>
     </header>
 
+    <a href = "#quadrado">
+        <div class = "voltarBtn">
+            <h1 style="color: black;" class="voltarBtnText"><i class="fa-solid fa-angles-up"></i></h1>
+        </div>
+    </a>
     <div class="ImgVertice">
         <img src="{% static 'imagens/Imagem vertice.png' %}">
         <img src="{% static 'imagens/Imagem vertice 2.png' %}">
@@ -112,11 +115,10 @@
             <div class="barrinha"></div>
 
             <div class="rodapeicon">
-                <img src="{% static 'imagens/icone rodapé.png' %}">
-                <img src="{% static 'imagens/icone rodapé 2.png' %}">
+                <a href = "#"><img src="{% static 'imagens/icone rodapé.png' %}"></a>
+                <a href = "mailto:garciamatheus27@gmail.com"><img src="{% static 'imagens/icone rodapé 2.png' %}"></a>
             </div>
         </div>
     </footer>
-
 </body>
 </html>
