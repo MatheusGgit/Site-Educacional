@@ -20,10 +20,10 @@
 <nav class="BN">
         <ul class="Nav-BN">
             <li class="logo">
-                <a href="{% url 'Site_Educacional' %}" class="logo-nav">
-<!--                    {% block fotoPerfilUser %}{%endblock%}-->
-                    <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo">
-                </a>
+                <button class = "btnOpen">
+                    <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo" ONMOUSEOVER="changeurl()"
+                                                                                        onmouseleave="returnurl()">
+                </button>
                 <span class = "texto-logo">LMG ARTS</span>
             </li>
             <li class="nav-item">
@@ -75,4 +75,30 @@
     {%block conteudo%}{%endblock%}
     </main>
 </body>
+<script>
+    const toggleBtn =document.querySelector('.btnOpen');
+    const sidebar =document.querySelector('.BN');
+
+    toggleBtn.addEventListener('click', function(){
+        sidebar.classList.toggle('BNtoggle');
+    });
+
+    closeBtn.addEventListener('click', function(){
+        sidebar.classList.remove('BNtoggle');
+    });
+
+    function changeurl()
+    {
+        var logo = document.querySelector('.mini-logo')
+        url = "{% static 'imagens/threeBars.png' %}"
+        logo.src = url
+    }
+
+    function returnurl()
+    {
+        var logo = document.querySelector('.mini-logo')
+        url = "{% static 'imagens/mini-logo.jpeg' %}"
+        logo.src = url
+    }
+</script>
 </html>

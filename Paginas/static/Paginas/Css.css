@@ -55,15 +55,26 @@
         background: #023c88;
     }
 
-    .BN:hover /*Aumenta o tamanho da barra ao posicionar o mouse em cima*/
+    .BNtoggle
     {
         z-index: 1;
         width: 18rem;
     }
 
-    .BN:hover .link-text /*deixa o display == true ao posicionar o mouse*/
+    .btnOpen
     {
-        display: block;
+        cursor: pointer;
+        background: transparent;
+        border: transparent;
+    }
+
+    .btnOpen:hover
+    {}
+
+    .BNtoggle .link-text /*deixa o display == true ao posicionar o mouse*/
+    {
+        transition: 1.3s;
+        opacity: 100%;
     }
 
     .BN::-webkit-scrollbar /*remove o scroll-bar da BN*/
@@ -90,6 +101,7 @@
 
     .nav-item:hover
     {
+        border-radius: 5px;
         background: #0f72f3;
     }
 
@@ -127,19 +139,12 @@
 
     .link-text
     {
-        display: none;
+        opacity: 0;
         margin-left: 1rem;
         color: rgb(255, 255, 255);
     }
 
     .link-nav #logo
-    {
-        width: 2rem;
-        min-width: 2rem;
-        margin: 0 1.5rem;
-    }
-
-    .link-nav #flecha
     {
         width: 2rem;
         min-width: 2rem;
@@ -165,19 +170,27 @@
         color: rgb(255, 255, 255);
     }
 
-    .BN:hover .mini-logo
+    .BNtoggle .mini-logo
     {
         width: 50%;
     }
 
     .mini-logo
     {
-        transition: 200ms;
+        transition: 1s;
         width: 70px;
     }
 
-    .BN:hover .texto-logo
+    .mini-logo:hover
     {
+        transition: 300ms;
+        filter: invert()
+    }
+
+    .BNtoggle .texto-logo
+    {
+        transition: 1.5s;
+        position: relative;
         display: block;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         text-decoration: none;
@@ -444,3 +457,141 @@
         opacity: 50%;
     }
 /* } */
+
+/* Comprar Cursos */
+/*{*/
+    #CC main
+    {
+        padding: 0;
+    }
+    #CC .maingrid{
+      display: grid;
+      grid-template-columns: 5fr 2fr;
+    }
+
+    #CC .imagem-curso{
+      background-color: rgb(143, 143, 143);
+      height: 80vh;
+      border-right: 4px solid rgb(241, 241, 241);
+      border-bottom: 4px solid rgb(241, 241, 241);
+    }
+
+    #CC .barra{
+      margin-left: 0.5rem;
+      display: flex;
+      background: white;
+      height: 11%;
+      color: white;
+      justify-content: space-between;
+    }
+
+    #CC .InfoConteudo{
+      background: rgb(185, 184, 184);
+      display: flex;
+      height: 91vh;
+      flex-direction: column;
+    }
+
+    #CC .Info1{
+      height: 20%;
+      width: auto;
+      background: white;
+      border-bottom: 4px solid rgb(241, 241, 241);
+      color: black;
+
+    }
+    #CC .Info2{
+      height: 60%;
+      width: auto;
+      background: white;
+      color: black;
+    }
+
+    #CC .Info3{
+      height: 30%;
+      width: auto;
+      background: white;
+      border-top: 4px solid rgb(241, 241, 241);
+      color: black;
+    }
+    /* cor INFO #054aa5*/
+
+    #CC .Info-Text
+    {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 20px;
+        color: black;
+    }
+
+    #CC .Info-Title
+    {
+        margin-left: 10px;
+        margin-right: 10px;
+        font-weight: 0px;
+        color: #8b8888;
+    }
+
+    #CC .btn {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-left: 30px;
+      margin-top: 10px;
+      cursor: pointer;
+      border-radius: 20px;
+      height: 50px;
+      width: 10rem;
+    }
+
+    #CC .fonte
+    {
+        margin-right: 15px;
+        color: black;
+    }
+
+    #CC .fonte-redirect
+    {
+        text-decoration: none;
+        color: #3d5ed9;
+        text-align: center;
+        margin-top: 20px;
+        font-size: 25px;
+        margin-left: 0px;
+    }
+
+    #CC .fonte-info
+    {
+        display: flex;
+        flex-direction: row;
+        margin-right: 20px;
+    }
+
+    #CC .alert {
+        padding: 20px;
+        z-index: 2;
+        background-color: green;
+        text-align: center;
+        color: white;
+        border-radius: 5px;
+     }
+
+    #CC .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #CC .closebtn:hover {
+        color: black;
+    }
+/*}*/
