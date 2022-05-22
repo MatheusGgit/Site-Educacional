@@ -171,7 +171,7 @@ def index(request):
             request.session['login'] = True
             return redirect('Site_Educacional')
 
-# Cadastro - MUDAR
+# Cadastro
 def Cadastro(request):
     if request.method != 'POST':
         return render(request, 'Paginas/Cadastro.html')

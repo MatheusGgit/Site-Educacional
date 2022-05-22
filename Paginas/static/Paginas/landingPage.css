@@ -201,14 +201,14 @@ body::-webkit-scrollbar-thumb{
 
 .img4 img{
     width: 100%;
-    margin-top: 50px;
+    margin-top: 15px;
     border-radius: 6px;
 }
 
 .info2 h3{
-    font-size: 25px;
+    font-size: 35px;
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 2.5rem;
 }
 
 .info2{
@@ -325,3 +325,10 @@ body::-webkit-scrollbar-thumb{
     margin-top: 22%;
     width: 50%;
 }
+
+.liInfo2
+{
+    padding-top: 10px;
+    font-size: 25px;
+}
+
