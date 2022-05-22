@@ -7,7 +7,6 @@ class Usuarios(models.Model):
     senha = models.CharField(max_length=255)
     data_criacao = models.DateTimeField(default=timezone.now)
     descricao = models.TextField(blank=True)
-    mostrar = models.BooleanField(default=True)
     foto = models.ImageField(blank=True, upload_to='fotos/%Y/%m')
     objects = models.Manager()
 

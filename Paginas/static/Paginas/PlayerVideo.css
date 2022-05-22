@@ -116,3 +116,25 @@ body{
     margin-right: 15px;
 }
 
+.playBtn
+{
+    cursor: pointer;
+    background: #8b8888;
+    filter: opacity(50%);
+    border-radius: 50%;
+    z-index: 2;
+    position: absolute;
+    text-align: center;
+    right: 62%;
+    bottom: 62%;
+    width: 100px;
+    height: 100px
+}
+
+#playIco
+{
+    transform: scale(3);
+    margin-top: 2.6rem;
+    margin-left: 0.45rem;
+}
+

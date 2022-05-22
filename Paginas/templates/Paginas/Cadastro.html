@@ -56,42 +56,41 @@
             </section>
         </form>
     </div>
-
 </body>
-    <script>
-        const senha = document.querySelector('.senha');
-        const btn = document.querySelector('.btn');
-        const senha2 = document.querySelector('.senha2');
-        const btn2 = document.querySelector('.btn2');
+<script>
+    const senha = document.querySelector('.senha');
+    const btn = document.querySelector('.btn');
+    const senha2 = document.querySelector('.senha2');
+    const btn2 = document.querySelector('.btn2');
 
-        btn.onclick = () =>
+    btn.onclick = () =>
+    {
+        if (senha.type === 'password')
         {
-            if (senha.type === 'password')
-            {
-                senha.type = 'text'
-                console.log('Active')
-                btn.src = "{% static 'imagens/olho-fechado.png' %}"
-            }
-            else
-            {
-                btn.src = "{% static 'imagens/olho-aberto.png' %}"
-                senha.type = 'password'
-            }
+            senha.type = 'text'
+            console.log('Active')
+            btn.src = "{% static 'imagens/olho-fechado.png' %}"
         }
+        else
+        {
+            btn.src = "{% static 'imagens/olho-aberto.png' %}"
+            senha.type = 'password'
+        }
+    }
 
-        btn2.onclick = () =>
+    btn2.onclick = () =>
+    {
+        if (senha2.type === 'password')
         {
-            if (senha2.type === 'password')
-            {
-                senha2.type = 'text'
-                console.log('Active')
-                btn2.src = "{% static 'imagens/olho-fechado.png' %}"
-            }
-            else
-            {
-                btn2.src = "{% static 'imagens/olho-aberto.png' %}"
-                senha2.type = 'password'
-            }
+            senha2.type = 'text'
+            console.log('Active')
+            btn2.src = "{% static 'imagens/olho-fechado.png' %}"
         }
-    </script>
+        else
+        {
+            btn2.src = "{% static 'imagens/olho-aberto.png' %}"
+            senha2.type = 'password'
+        }
+    }
+</script>
 </html>

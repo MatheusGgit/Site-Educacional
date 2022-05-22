@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'Paginas/PlayerVideo.css' %}">
     <link rel="shortcut icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
     <link rel="icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/ba25beb2a7.js"></script>
 </head>
 <body>
     <div class = "header">
@@ -18,15 +19,15 @@
     </div>
 
     <section class="main">
-
         <div class="main-video">
             <div class="Video">
+                <div class = "playBtn" onclick="loadVideo()">
+                    <i class="fa-solid fa-play" id = "playIco"></i>
+                </div>
                 {% if Videos.video.url %}
                     <video controls class = "videoFrame" id = "myvideo"></video>
                 {% else %}
-                    <video controls autoplay>
-                        <source src = "/media/videos/2022/loading.mp4">
-                    </video>
+                    <video controls></video>
                 {% endif %}
             </div>
             <div class = "info">
@@ -51,27 +52,5 @@
         </div>
     </section>
 </body>
-<script>
-let video = document.querySelector('video');
-video.ontimeupdate = function() {videoTracking()};
-let cb = document.querySelector('.cb');
-
-document.querySelectorAll('.btn').forEach(btn =>
-{
-  btn.addEventListener('click', event =>
-  {
-    let url = btn.getAttribute('id');
-    video.src = url;
-  })
-})
-
-function videoTracking()
-{
-    videoPercentage = (video.duration * 90) / 100;
-    if(video.currentTime >= videoPercentage)
-    {
-        cb.checked = true;
-    }
-}
-</script>
+<script src = "{% static 'Js/PlayerVideo.js' %}"></script>
 </html>

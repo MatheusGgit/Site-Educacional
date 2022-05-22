@@ -117,6 +117,7 @@ def redefPhoto(request):
 # Páginas que podem ser acessadas sem estar logado
 # Landing Page
 def landingPage(request):
+    request.session['login'] = False
     return render(request, 'Paginas/landingPage.html')
 
 # RedefinicaoSenha - RecuperacaoSenha
@@ -153,6 +154,7 @@ def Recuperacao(request):
 
 # Login
 def index(request):
+    request.session['login'] = False
     if request.method != "POST":
         return render(request, 'Paginas/Login.html')
     else:
@@ -167,8 +169,7 @@ def index(request):
             request.session['email'] = email
             request.session['nome'] = nome.nome
             request.session['login'] = True
-            user = get_object_or_404(Usuarios, email = email)
-            return render(request, 'Paginas/Perfil.html', {'Usuarios': user})
+            return redirect('Site_Educacional')
 
 # Cadastro - MUDAR
 def Cadastro(request):
