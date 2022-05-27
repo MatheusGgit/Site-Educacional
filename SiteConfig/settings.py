@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'SiteConfig.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'lmg_arts',
+        'NAME': 'lmg_arts_db',
         'USER': 'root',
         'PASSWORD': 'felipe12345',
         'HOST': 'localhost',

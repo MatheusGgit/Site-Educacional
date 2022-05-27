@@ -1,6 +1,6 @@
 function loadVideo()
 {
-    btn = document.querySelectorAll('.btn')
+    btn = document.querySelectorAll('.videoBtn')
     btnPlay = document.querySelector('.playBtn')
     var urlVideo = btn[0].getAttribute('id');
     video.src = urlVideo;
@@ -12,8 +12,9 @@ function loadVideo()
 let video = document.querySelector('video');
 video.ontimeupdate = function() {videoTracking()};
 let cb = document.querySelector('.cb');
+desc = document.querySelector('.descricao-video')
 
-document.querySelectorAll('.btn').forEach(btn =>
+document.querySelectorAll('.videoBtn').forEach(btn =>
 {
     btn.addEventListener('click', event =>
     {

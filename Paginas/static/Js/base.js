@@ -1,4 +1,4 @@
-const toggleBtn =document.querySelector('.btnOpen');
+const toggleBtn =document.querySelector('.btnShow');
 const sidebar =document.querySelector('.BN');
 
 toggleBtn.addEventListener('click', function()
@@ -11,16 +11,8 @@ closeBtn.addEventListener('click', function()
     sidebar.classList.remove('BNtoggle');
 });
 
-function changeurl()
+function toggleDarkMode()
 {
-    var logo = document.querySelector('.mini-logo')
-    url = "../../static/imagens/threeBars.png"
-    logo.src = url
-}
-
-function returnurl()
-{
-    var logo = document.querySelector('.mini-logo')
-    url = "../../static/imagens/mini-logo.jpeg"
-    logo.src = url
+    btnToggleDM = document.body;
+    btnToggleDM.classList.toggle('Dark');
 }

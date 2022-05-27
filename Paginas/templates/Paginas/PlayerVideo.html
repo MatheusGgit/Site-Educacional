@@ -1,23 +1,10 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="pt_BR" style="scroll-behavior: smooth;">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aulas</title>
-    <link rel="stylesheet" href="{% static 'Paginas/PlayerVideo.css' %}">
-    <link rel="shortcut icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
-    <link rel="icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
-    <script src="https://kit.fontawesome.com/ba25beb2a7.js"></script>
-</head>
-<body>
-    <div class = "header">
-        <a href = "{% url 'MeuAprendizado' %}" style="text-decoration: none;">
-            <h2 class = "titulo" title = "Voltar">{{Cursos.nome}}</h2>
-        </a>
-    </div>
-
+{%block id%}<html lang="en" id = "playervideo">{%endblock%}
+{%block title%}{{Cursos.nome}}{%endblock%}
+{%block TextoHeader%}{{Cursos.nome}}{%endblock%}
+{% block body %}<body class = "{{Usuarios.userTheme}}">{%endblock%}
+{% block conteudo %}
     <section class="main">
         <div class="main-video">
             <div class="Video">
@@ -27,20 +14,21 @@
                 {% if Videos.video.url %}
                     <video controls class = "videoFrame" id = "myvideo"></video>
                 {% else %}
-                    <video controls></video>
+                    <video controls autoplay></video>
                 {% endif %}
             </div>
             <div class = "info">
-                <h3 class="titulo">{{Cursos.nome}}</h3>
-                <h3 class = "info-text">Info:</h3>
+                <h3 class = "info-text">Sobre:</h3>
                 <div class = "Desc">
-                    {{Cursos.descricao}}
+                    {% for video in Videos %}
+                        <span class="descricao-video" id = "{{video.video.url}}">{{video.descAula}}</span>
+                    {% endfor %}
                 </div>
             </div>
         </div>
         <div class="playlist">
             {% for video in Videos %}
-            <a class = "btn" id = "{{video.video.url}}">
+            <a class = "videoBtn" id = "{{video.video.url}}">
                 <div class="videos">
                     <input type = "checkbox" value="visto" class = "cb" id = "{{video.video.url}}">
                     <h2 class = "titulo">
@@ -51,6 +39,6 @@
             {% endfor %}
         </div>
     </section>
-</body>
+
 <script src = "{% static 'Js/PlayerVideo.js' %}"></script>
-</html>
+{% endblock %}

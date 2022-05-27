@@ -16,13 +16,12 @@
     <link rel="icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
 </head>
 
-<body>
+{% block body %}{% endblock %}
 <nav class="BN">
         <ul class="Nav-BN">
             <li class="logo">
-                <button class = "btnOpen">
-                    <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo" ONMOUSEOVER="changeurl()"
-                                                                                        onmouseleave="returnurl()">
+                <button class="btnShow">
+                    <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo">
                 </button>
                 <span class = "texto-logo">LMG ARTS</span>
             </li>
@@ -69,7 +68,7 @@
         </ul>
     </nav>
     <div class="header">
-        <h1>{%block TextoHeader%}{%block nomeUsuario%}{%endblock%}{%endblock%}</h1>
+        <h1 onclick="toggleDarkMode()">{%block TextoHeader%}{%block nomeUsuario%}{%endblock%}{%endblock%}</h1>
     </div>
     <main>
     {%block conteudo%}{%endblock%}

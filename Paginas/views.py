@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.validators import validate_email
 from django.contrib import messages
@@ -41,13 +42,20 @@ def MeuAprendizado(request):
     print(f'ID USUARIO: {userID}')
 
     curso = Cursos.objects.filter(usuarioID = userID)
-    return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': curso})
+    user = get_object_or_404(Usuarios, email=email)
+    return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': curso, 'Usuarios': user})
 
 def Catalogo(request):
     if not request.session['login']:
         return redirect('landingPage')
-    curso = Cursos.objects.all()
-    return render(request, 'Paginas/Catalogo.html', {'Cursos': curso})
+
+    curso = Cursos.objects.order_by('-id')
+    paginator = Paginator(curso, 3)
+    page = request.GET.get('p')
+    curso = paginator.get_page(page)
+    email = request.session['email']
+    user = get_object_or_404(Usuarios, email=email)
+    return render(request,  'Paginas/Catalogo.html', {'Cursos': curso, 'Usuarios': user})
 
 def ComprarCurso(request, curso_id):
     if not request.session['login']:
@@ -55,7 +63,9 @@ def ComprarCurso(request, curso_id):
     curso = get_object_or_404(Cursos, id=curso_id)
 
     if request.method != "POST":
-        return render(request, 'Paginas/ComprarCurso.html', {'Cursos': curso})
+        email = request.session['email']
+        user = get_object_or_404(Usuarios, email=email)
+        return render(request, 'Paginas/ComprarCurso.html', {'Cursos': curso, 'Usuarios': user})
     else:
         email = request.session['email']
         u1 = get_object_or_404(Usuarios, email=email)
@@ -63,7 +73,7 @@ def ComprarCurso(request, curso_id):
         c1 = get_object_or_404(Cursos, id=curso_id)
         c1.usuarioID.add(u1)
         messages.add_message(request, messages.SUCCESS, 'Curso Adquirido!')
-        return render(request, 'Paginas/ComprarCurso.html', {'Cursos': curso})
+        return render(request, 'Paginas/ComprarCurso.html', {'Cursos': curso, 'Usuarios': u1})
 
 def PlayerVideo(request, curso_id):
     if not request.session['login']:
@@ -71,7 +81,9 @@ def PlayerVideo(request, curso_id):
 
     curso = get_object_or_404(Cursos, id = curso_id)
     videos = Video.objects.filter(cursoID = curso_id)
-    return render(request, 'Paginas/PlayerVideo.html', {'Cursos': curso, 'Videos': videos})
+    email = request.session['email']
+    user = get_object_or_404(Usuarios, email=email)
+    return render(request, 'Paginas/PlayerVideo.html', {'Cursos': curso, 'Videos': videos, 'Usuarios': user})
 
 def redefNome(request):
     if not request.session['login']:
@@ -155,6 +167,7 @@ def Recuperacao(request):
 # Login
 def index(request):
     request.session['login'] = False
+
     if request.method != "POST":
         return render(request, 'Paginas/Login.html')
     else:
@@ -230,11 +243,14 @@ def Logout(request):
 def busca(request):
     termo = request.GET.get('termo')
 
-    campos = Concat('nome', Value(' '))
-    cursos = Cursos.objects.annotate(
-        nome_curso=campos
-    ).filter(
-        Q(nome_curso__icontains=termo)
-    )
-    # return render(request, 'Paginas/busca.html')
-    return render(request, 'Paginas/busca.html', {'Cursos': cursos})
+    if str(termo) == "" or str(termo) == " ":
+        return redirect('Catalogo')
+    else:
+        campos = Concat('nome', Value(' '))
+        cursos = Cursos.objects.annotate(
+            nome_curso=campos
+        ).filter(
+            Q(nome_curso__icontains=termo)
+        )
+        return render(request, 'Paginas/busca.html', {'Cursos': cursos})
+

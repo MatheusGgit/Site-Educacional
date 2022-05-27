@@ -4,6 +4,7 @@
 {%block id%}<html lang="en">{%endblock%}
 {%block TextoHeader%}Seja bem vindo(a) {%block nomeUsuario%}{{ Usuarios.nome }}{%endblock%}, tenha um bom dia!{%endblock%}
 {%block title%}Home{%endblock%}
+{% block body %}<body class = "{{Usuarios.userTheme}}">{%endblock%}
 {%block conteudo%}
 <div class="mainContent">
     <div class="banner animated tada">
@@ -13,7 +14,7 @@
             </div>
     <div class="info">
         <div>
-            <h1 style="margin-top: 3rem;">Achamos que você possa gostar</h1>
+            <h1 style="margin-top: 3rem;">Achamos que talvez você possa gostar</h1>
         </div>
         <div class = 'cursos'>
             <a href="{% url 'ComprarCurso' Cursos.id %}">
