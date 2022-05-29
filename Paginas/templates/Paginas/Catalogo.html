@@ -2,11 +2,11 @@
 {% load static %}
 
 {%block id%}<html lang="en" id = "catalogo">{%endblock%}
-{% block body %}<body class = "{{Usuarios.userTheme}}">{%endblock%}
 {%block title%}Catálogo{%endblock%}
 {%block TextoHeader%}Catálogo{%endblock%}
 {%block conteudo%}
-<div id="myBtnContainer">
+<div style="display: flex">
+    <div id="myBtnContainer">
   <button class="btn active" onclick="filterSelection('all')"> Mostrar todos</button>
   <button class="btn" onclick="filterSelection('Pintura')"> Pintura</button>
   <button class="btn" onclick="filterSelection('Arte Digital')"> Arte digital</button>
@@ -24,6 +24,8 @@
         </div>
     </div>
 </form>
+    <i class = 'fa-solid fa-magnifying-glass'></i>
+</div>
 
 {% if Cursos %}
 <div class = 'cursos'>
@@ -56,7 +58,6 @@
     {% endfor %}
 </div>
 <div class="pagination">
-    <a>&laquo;</a>
     {% for pagina in Cursos.paginator.page_range %}
         {%if Cursos.number == pagina%}
             <a class = "active" href = "?p={{pagina}}">{{pagina}}</a>
@@ -64,11 +65,10 @@
             <a href = "?p={{pagina}}">{{pagina}}</a>
         {%endif%}
         {%endfor%}
-    <a>&raquo;</a>
 </div>
 {% else %}
 <div style="text-align: center;">
-    <img src = "https://cdn-icons-png.flaticon.com/512/3721/3721746.png" width="10%" style="margin-top: 10rem; filter: opacity(25%);">
+    <img class = "lupa-catalogo" src = "https://cdn-icons-png.flaticon.com/512/3721/3721746.png">
     <h4 style="color: #949494;">Nenhum curso com este nome</h4>
 </div>
 {% endif %}

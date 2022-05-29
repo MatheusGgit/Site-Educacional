@@ -7,7 +7,7 @@ class userCursos:
     def email_get(self, email: str) -> bool:
 
         query = self.__db.execute_sql(
-            f"SELECT id FROM lmg_arts.paginas_usuarios WHERE email = '{email}';"
+            f"SELECT id FROM lmg_arts_db.paginas_usuarios WHERE email = '{email}';"
         )
 
         item = query.fetchone()

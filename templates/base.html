@@ -16,7 +16,7 @@
     <link rel="icon" sizes="32x32" href="{% static 'imagens/favicon (2).ico' %}" type="image/x-icon">
 </head>
 
-{% block body %}{% endblock %}
+<body class = "{{Usuarios.userTheme}}">
 <nav class="BN">
         <ul class="Nav-BN">
             <li class="logo">
@@ -68,10 +68,38 @@
         </ul>
     </nav>
     <div class="header">
-        <h1 onclick="toggleDarkMode()">{%block TextoHeader%}{%block nomeUsuario%}{%endblock%}{%endblock%}</h1>
+        <h1 onclick="toggleDarkMode()">{%block TextoHeader%}{%endblock%}</h1>
+        <div style="display: flex;">
+            <h3 class = "header-userName">{{Usuarios.nome}}</h3>
+            {% if Usuarios.foto %}
+                <img class = "img-header" src = "{{Usuarios.foto.url}}" onclick="openMenuFunction()">
+            {% else %}
+                <img class = "img-header" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"onclick="openMenuFunction()">
+            {%endif%}
+        </div>
+        <div class = "menu">
+            <li>
+                <a href = "#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span class="menu-text">Configurações</span>
+                </a>
+            <br>
+            <br>
+                <a href = "/theme?color=Dark">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="menu-text">Modo Escuro</span>
+                </a>
+            <br>
+            <br>
+                <a href = "/theme?color=Light">
+                    <i class="fa-solid fa-sun"></i>
+                    <span class="menu-text">Modo Claro</span>
+                </a>
+            </li>
+        </div>
     </div>
     <main>
-    {%block conteudo%}{%endblock%}
+        {%block conteudo%}{%endblock%}
     </main>
 </body>
 <script src = "{% static 'Js/base.js' %}"></script>

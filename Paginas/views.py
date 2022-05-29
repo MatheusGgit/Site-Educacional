@@ -43,6 +43,8 @@ def MeuAprendizado(request):
 
     curso = Cursos.objects.filter(usuarioID = userID)
     user = get_object_or_404(Usuarios, email=email)
+
+    # return render_to_response('index.html', {'user': Usuarios.objects.all()}, context_instance=RequestContext(request))
     return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': curso, 'Usuarios': user})
 
 def Catalogo(request):
@@ -96,6 +98,7 @@ def redefNome(request):
         else:
             nome = request.POST.get('nome')
             Usuarios.objects.filter(email=email).update(nome=nome)
+
 
             return redirect('Perfil')
 
@@ -252,5 +255,25 @@ def busca(request):
         ).filter(
             Q(nome_curso__icontains=termo)
         )
-        return render(request, 'Paginas/busca.html', {'Cursos': cursos})
+        email = request.session['email']
+        user = get_object_or_404(Usuarios, email=email)
+
+        return render(request, 'Paginas/busca.html', {'Cursos': cursos, 'Usuarios': user})
+
+def base(request):
+    email = request.session['email']
+    user = Usuarios.objects.filter(email=email)
+
+    return {'Usuarios': user}
+
+def theme(request):
+    color = request.GET.get('color')
+    email = request.session['email']
+
+    if color == "Dark":
+        Usuarios.objects.filter(email=email).update(userTheme = 2)
+    else:
+        Usuarios.objects.filter(email=email).update(userTheme = 1)
+
+    return redirect('index')
 
