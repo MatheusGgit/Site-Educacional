@@ -8,7 +8,7 @@ from .services.cursosAuth import userCursos
 from hashlib import *
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
-from .models import Usuarios, Cursos, Video
+from .models import Usuarios, Cursos, Video, CursosFavorito
 
 
 # Páginas - não é possível acessar sem estar logado
@@ -36,16 +36,32 @@ def Perfil(request):
 def MeuAprendizado(request):
     if not request.session['login']:
         return redirect('landingPage')
+    else:
+        email = request.session['email']
+        userID = userCursos().email_get(email)
 
-    email = request.session['email']
-    userID = userCursos().email_get(email)
-    print(f'ID USUARIO: {userID}')
+        if request.method != "POST":
+            print(f'ID USUARIO: {userID}')
 
-    curso = Cursos.objects.filter(usuarioID = userID)
-    user = get_object_or_404(Usuarios, email=email)
+            curso = Cursos.objects.filter(usuarioID=userID)
+            user = get_object_or_404(Usuarios, email=email)
+            fav = CursosFavorito.objects.filter(usuario=userID)
 
-    # return render_to_response('index.html', {'user': Usuarios.objects.all()}, context_instance=RequestContext(request))
-    return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': curso, 'Usuarios': user})
+            return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': curso, 'Usuarios': user, 'favorite': fav})
+
+        else:
+            idcurso = request.POST.get('btnFav')
+            u = get_object_or_404(Usuarios, email=email)
+
+            c = get_object_or_404(Cursos, id=idcurso)
+
+            curso = CursosFavorito(usuario = u, curso = c)
+
+            CursosFavorito.save(curso)
+
+            return redirect('MeuAprendizado')
+
+
 
 def Catalogo(request):
     if not request.session['login']:
@@ -275,5 +291,5 @@ def theme(request):
     else:
         Usuarios.objects.filter(email=email).update(userTheme = 1)
 
-    return redirect('index')
+    return redirect('Site_Educacional')
 

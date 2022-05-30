@@ -50,3 +50,8 @@ class Video(models.Model):
     def __str__(self):
         return self.nomeAula
 
+class CursosFavorito(models.Model):
+    usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE, blank=True, null=True)
+    curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, blank=True, null=True)
+
+    objects = models.Manager()

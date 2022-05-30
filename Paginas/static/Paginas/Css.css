@@ -72,7 +72,14 @@
 
     .fa-pen-to-square
     {
+        transition: 230ms;
         color: black;
+    }
+
+    .fa-pen-to-square:hover
+    {
+        transform: scale(1.3);
+        transition: 230ms;
     }
 
     #perfil .Dark .account-info
@@ -160,6 +167,8 @@
 
     .nav-item:hover
     {
+        transform: scale(1.1);
+        transition: 400ms ease;
         border-radius: 5px;
         background: #0f72f3;
     }
@@ -180,7 +189,7 @@
         align-items: center;
         flex-direction: row;
         height: 5rem;
-        color: var(--text-primary);
+        color: white;
         text-decoration: none;
         margin-left: 1.5rem;
         margin-right: 2rem;
@@ -285,16 +294,10 @@
         cursor: pointer;
     }
 
-    .Dark .img-header:hover
-    {
-        transition: 100ms;
-        border: 3px solid white;
-    }
-
     .img-header:hover
     {
-        transition: 100ms;
-        border: 3px solid black;
+        transform: scale(1.15);
+        transition: 200ms;
     }
 
 
@@ -356,7 +359,7 @@
         top: 10%;
         background: white;
         width: 12%;
-        height: 14vh;
+        height: 19vh;
         box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25);
         text-decoration: none;
         z-index: 3;
@@ -434,144 +437,242 @@
 
     .cursox:hover
     {
+        transform: scale(1.04);
         float: left;
         filter: grayscale(0%);
         transition: 400ms;
     }
-/* } */
 
+    .Dark .lupa-icon
+    {
+        filter: invert();
+        opacity: 25%;
+    }
 
-/* Catálogo */
-/* {        */
-
-    .lupa-catalogo
+    .lupa-icon
     {
         width: 10%;
         margin-top: 10rem;
         filter: opacity(25%);
     }
 
-    .Dark .lupa-catalogo
+    #lupa-icon1
     {
-        width: 10%;
-        margin-top: 10rem;
-        filter: invert();
-        opacity: 25%;
+        margin-top: 2rem;
     }
 
-    #catalogo .fa-magnifying-glass
+    .fa-star
     {
+        transition: 300ms;
         position: absolute;
-        color: #868686;
-        margin-top: 0.6rem;
-        right: 4%;
+        font-size: 1.5rem;
+        margin-top: 1.3rem;
+        margin-left: 21rem;
     }
 
-    #catalogo body
+    .fa-star:hover
     {
-        background: #fff;
+        transform: scale(1.5);
+        transition: 300ms;
+        color: yellow;
     }
 
-    #catalogo .btn:hover
-    {
-      background-color: #ddd;
-        color: black;
-    }
+/* } */
 
-    #catalogo .btn.active
-    {
-      background-color: #054ba7;
-      color: white;
-      height: 3rem;
-    }
 
-    #catalogo .btn
-    {
-        border-radius: 5px;
-        border: 0;
-        outline: none;
-        padding: 12px 16px;
-        background-color: transparent;
-        cursor: pointer;
-        margin-bottom: 1rem;
-        color: white;
-    }
+/* Catálogo */
+/* {        */
 
-    .cursos
-    {
-        overflow: hidden;
-        width: auto;
-        border-radius: 10px;
-        background-color: #e3e3eb;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(310px, auto));
-        gap: 0.5%;
-        margin-right: 15px;
-        padding-bottom: 10px;
-        padding-right: 10px;
-    }
 
-    .hrefCurso
-    {
-        display: none;
-    }
+.playlist .titulo
+{
+margin-right: 15px;
+}
 
-    .filterDiv
-    {
-        transition: 400ms;
-        float: left;
-        filter: grayscale(100%);
-        /*position: relative;*/
-        border-radius: 2%;
-        height: 50vh;
-        margin: 20px;
-        width: 50vh;
-        background-color: #80a4f3;
-        flex-direction: row;
-        display: none;
-    }
+.pagination
+{
+    margin-top: 2rem;
+    display: inline-block;
+}
 
-    .filterDiv:hover
-    {
-        filter: grayscale(0%);
-        transition: 400ms;
-    }
+.pagination a
+{
+    margin-right: 0.5rem;
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
 
-    .show
-    {
-        display: flex;
-    }
+.Dark .pagination a
+{
+    color: white;
+}
 
-    .busca
-    {
-        width: 99%;
-        /* display: grid; */
-        grid-template-columns: repeat(auto-fit, minmax(310px, auto));
-        margin-bottom: 4%;
-        margin-left: 21.7rem;
-        border-radius: 10px;
-        padding: 10px;
-    }
+.pagination a.active {
+  background-color: #054ba7;
+  color: white;
+  border-radius: 5px;
+}
 
-    .curso-zindex
-    {
-        position: absolute;
-        bottom: 0px;
-        background: black;
-        border-radius: 7px;
-        height: 25%;
-        width: 100%;
-        align-content: flex-end;
-        justify-content: space-between;
-        filter: opacity(80%);
-    }
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+  border-radius: 5px;
+}
 
-    .curso-info
-    {
-        margin-left: 1.5rem;
-        text-decoration: none;
-        color: #fff;
-    }
+.Dark .pagination a:hover:not(.active) {
+    background-color: #bdbbbb;
+    color: black;
+    transform: scale(1.2);
+    transition: 400ms;
+}
+
+.lupa-catalogo
+{
+    width: 10%;
+    margin-top: 10rem;
+    filter: opacity(25%);
+}
+
+.Dark .lupa-catalogo
+{
+    width: 10%;
+    margin-top: 10rem;
+    filter: invert();
+    opacity: 25%;
+}
+
+#catalogo .fa-magnifying-glass
+{
+    position: absolute;
+    color: #868686;
+    margin-top: 0.7rem;
+    right: 5%;
+}
+
+#catalogo body
+{
+    background: #fff;
+}
+
+#catalogo .btn:hover:not(.active)
+{
+    transform: scale(1.2);
+    transition: 400ms;
+    background-color: #ddd;
+    color: black;
+}
+
+#catalogo .btn.active
+{
+  background-color: #054ba7;
+  color: white;
+  height: 3rem;
+}
+
+#catalogo .btn
+{
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+    padding: 12px 16px;
+    background-color: transparent;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    color: black;
+}
+
+#catalogo .Dark .btn
+{
+    color: white;
+}
+
+.cursos
+{
+    overflow: hidden;
+    width: auto;
+    border-radius: 10px;
+    background-color: #e3e3eb;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, auto));
+    gap: 0.5%;
+    margin-right: 15px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+}
+
+.hrefCurso
+{
+    display: none;
+}
+
+.filterDiv
+{
+    transition: 400ms;
+    float: left;
+    filter: grayscale(100%);
+    /*position: relative;*/
+    border-radius: 2%;
+    height: 50vh;
+    margin: 20px;
+    width: 50vh;
+    background-color: #80a4f3;
+    flex-direction: row;
+    display: none;
+}
+
+.filterDiv:hover
+{
+    transform: scale(1.04);
+    filter: grayscale(0%);
+    transition: 400ms;
+}
+
+.show
+{
+    display: flex;
+}
+
+.busca
+{
+    width: 99%;
+    /* display: grid; */
+    grid-template-columns: repeat(auto-fit, minmax(310px, auto));
+    margin-bottom: 4%;
+    margin-left: 21.7rem;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.curso-zindex
+{
+    position: absolute;
+    bottom: 0;
+    background: black;
+    border-radius: 7px;
+    height: 25%;
+    width: 100%;
+    align-content: flex-end;
+    justify-content: space-between;
+    filter: opacity(80%);
+    margin-top: 0;
+}
+
+.curso-info
+{
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+.curso-info-nome
+{
+    margin-top: 0;
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+}
+
 /* }        */
 
 /* Perfil */
@@ -663,8 +764,8 @@
 
     #CC .Dark .imagem-curso
     {
-        border-right: 4px solid rgb(149 149 149);
-        border-bottom: 4px solid rgb(149 149 149);
+        border-right: 4px solid rgb(38, 38, 38);
+        border-bottom: 4px solid rgb(38, 38, 38);
     }
 
     #CC .barra
@@ -695,7 +796,7 @@
     #CC .Dark .Info1
     {
         background-color: #5e5e5e;
-         border-bottom: 4px solid rgb(149 149 149);
+         border-bottom: 4px solid rgb(38, 38, 38);
     }
 
     #CC .Dark .Info-Text
@@ -711,7 +812,7 @@
     #CC .Dark .Info3
     {
         background-color: #5e5e5e;
-        border-top: 4px solid rgb(149 149 149);
+        border-top: 4px solid rgb(38, 38, 38);
     }
 
     #CC .Info2{
@@ -768,10 +869,16 @@
       transition: 300ms;
     }
 
-    #CC .btn:hover
+    #CC .Dark .btn:hover
     {
         transition: 300ms;
         border: solid 4px white;
+    }
+
+    #CC .btn:hover
+    {
+        transition: 300ms;
+        border: solid 4px black;
     }
 
     #CC .fonte
@@ -946,6 +1053,7 @@
 
 .main .main-video .Desc
 {
+    font-family: 'Oxygen', sans-serif;
     margin-left: 15px;
     margin-right: 15px;
 }
@@ -977,7 +1085,13 @@
     right: 55%;
     bottom: 50%;
     width: 100px;
-    height: 100px
+    height: 100px;
+}
+
+.Dark #playIco
+{
+    color: white;
+    transition: 450ms;
 }
 
 #playIco
@@ -985,43 +1099,8 @@
     transform: scale(3);
     margin-top: 2.6rem;
     margin-left: 0.45rem;
+    color: black;
+    transition: 450ms;
 }
 
 /*}*/
-
- .playlist .titulo{
-    margin-right: 15px;
-}
-
- .pagination {
-     margin-top: 2rem;
-     ]display: inline-block;
-}
-
-.pagination a {
-  color: black;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-.Dark .pagination a
-{
-    color: white;
-}
-
-.pagination a.active {
-  background-color: #054ba7;
-  color: white;
-  border-radius: 5px;
-}
-
-.pagination a:hover:not(.active) {
-  background-color: #ddd;
-  border-radius: 5px;
-}
-
-.Dark .pagination a:hover:not(.active) {
-    background-color: #bdbbbb;
-    color: black;
-}

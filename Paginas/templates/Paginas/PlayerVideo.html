@@ -19,9 +19,13 @@
             <div class = "info">
                 <h3 class = "info-text">Sobre:</h3>
                 <div class = "Desc">
-                    {% for video in Videos %}
-                        <span class="descricao-video" id = "{{video.video.url}}">{{video.descAula}}</span>
-                    {% endfor %}
+                    {% if Videos.descAula %}
+                        {% for video in Videos %}
+                            <span class="descricao-video" id = "{{video.video.url}}">{{video.descAula}}</span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="descricao-video" id = "{{video.video.url}}">Sem descrição</span>
+                    {% endif %}
                 </div>
             </div>
         </div>

@@ -8,6 +8,7 @@
     <title>{% block title %}{%endblock%}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap" rel="stylesheet">
     <link href = '{% static "Paginas/Css.css" %}' rel = "stylesheet">
     <script src="https://kit.fontawesome.com/ba25beb2a7.js"></script>
@@ -50,12 +51,12 @@
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a href="{% url 'Logout' %}" class="link-nav">
-                    <i class="fa-solid fa-arrow-right-from-bracket" id="logo"></i>
-                    <span class="link-text">Sair</span>
-                </a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a href="{% url 'Logout' %}" class="link-nav">-->
+<!--                    <i class="fa-solid fa-arrow-right-from-bracket" id="logo"></i>-->
+<!--                    <span class="link-text">Sair</span>-->
+<!--                </a>-->
+<!--            </li>-->
 
             <li class = "nav-item">
                 <div class="div-social-media">
@@ -94,6 +95,12 @@
                 <a href = "/theme?color=Light">
                     <i class="fa-solid fa-sun"></i>
                     <span class="menu-text">Modo Claro</span>
+                </a>
+            <br>
+            <br>
+                <a href="{% url 'Logout' %}">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span class = "menu-text">Sair</span>
                 </a>
             </li>
         </div>

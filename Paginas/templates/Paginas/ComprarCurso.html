@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {%block id%}<html lang="en" id = "CC">{%endblock%}
-{%block TextoHeader%}Catalogo{%endblock%}
+{%block TextoHeader%}Catálogo{%endblock%}
 {%block title%}Comprar Curso{%endblock%}
 {%block conteudo%}
     <section class="maingrid">
@@ -52,7 +52,6 @@
             <div class="Info3">
                 <h2 class = "Info-Title">Mais Informações</h2>
                 <p class = "Info-Text">
-                    Total de Horas: {{Cursos.horas|date:'h:i'}}<br>
                     Preço: R$: 00,00<br>
                     Quantidade Aulas: {{Cursos.aulas}}<br>
                 </p>
