@@ -5,6 +5,9 @@
 {%block title%}Meu Aprendizado{%endblock%}
 {%block TextoHeader%}Meu Aprendizado{%endblock%}
 {%block conteudo%}
+{% for fav in favorites %}
+1
+{% endfor %}
 <h1>Favoritos:</h1>
     {% if favorite %}
         <div class="cursos">
@@ -32,7 +35,7 @@
                                                     background-position: center;">
                             <div class = "curso-zindex">
                                 <p class = "curso-info">Nome:</p>
-                                <p class = "curso-info">{{fav.nome}}</p>
+                                <p class = "curso-info">{{fav.curso}}</p>
                             </div>
                         </div>
                     </a>
@@ -58,18 +61,23 @@
                                                                                 background-position: center;">
                             <div class = "curso-zindex">
                                 <form method="POST">
-                                    {% csrf_token %}
-                                    <button type="submit"
-                                            style="
-                                            background: transparent;
-                                            border: transparent;
-                                            cursor: pointer;"
-                                            value="{{curso.id}}"
-                                            name = "btnFav">
+                            {% csrf_token %}
+                            <button type="submit"
+                                    style="
+                                    background: transparent;
+                                    border: transparent;
+                                    cursor: pointer;"
+                                    value="{{curso.id}}"
+                                    name = "btnFav">
 
-                                        <i class="fa-solid fa-star"></i>
-                                    </button>
-                                </form>
+                                        {% if curso.id in fav.curso %}
+                                            <i class="fa-solid fa-star" style="color: yellow"></i>
+                                        {% else %}
+                                            <i class="fa-solid fa-star"></i>
+                                        {% endif %}
+
+                            </button>
+                        </form>
                                 <p class = "curso-info-nome">Nome:</p>
                                 <p class = "curso-info">{{curso.nome}}</p>
                             </div>

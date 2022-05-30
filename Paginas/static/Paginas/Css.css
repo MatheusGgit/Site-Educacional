@@ -425,7 +425,6 @@
     {
         transition: 400ms;
         float: left;
-        filter: grayscale(100%);
         position: relative;
         border-radius: 2%;
         height: 50vh;
@@ -439,8 +438,8 @@
     {
         transform: scale(1.04);
         float: left;
-        filter: grayscale(0%);
         transition: 400ms;
+        filter: grayscale(0%);
     }
 
     .Dark .lupa-icon
@@ -468,6 +467,7 @@
         font-size: 1.5rem;
         margin-top: 1.3rem;
         margin-left: 21rem;
+        filter: none;
     }
 
     .fa-star:hover
@@ -655,6 +655,7 @@ margin-right: 15px;
     align-content: flex-end;
     justify-content: space-between;
     filter: opacity(80%);
+    /*filter: none;*/
     margin-top: 0;
 }
 
@@ -1072,6 +1073,10 @@ margin-right: 15px;
     background: #0f72f3;
 }
 
+.cb:active
+{
+    background: green;
+}
 
 .playBtn
 {

@@ -47,6 +47,9 @@ def MeuAprendizado(request):
             user = get_object_or_404(Usuarios, email=email)
             fav = CursosFavorito.objects.filter(usuario=userID)
 
+            for i in fav:
+                print(f'Favoritos: {i}')
+
             return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': curso, 'Usuarios': user, 'favorite': fav})
 
         else:
@@ -57,7 +60,10 @@ def MeuAprendizado(request):
 
             curso = CursosFavorito(usuario = u, curso = c)
 
-            CursosFavorito.save(curso)
+            if CursosFavorito.objects.filter(usuario = u, curso = c).exists():
+                CursosFavorito.objects.filter(usuario=u, curso=c).delete()
+            else:
+                CursosFavorito.save(curso)
 
             return redirect('MeuAprendizado')
 
