@@ -5,17 +5,30 @@ const menu = document.querySelector(".menu")
 const teste = document.querySelector(".teste")
 const textoMudarTema = document.querySelector('.changeTheme')
 const btnToggleDM = document.body;
+const headerTxt = document.querySelector('.header-Text');
+const menu_bars = document.querySelector('.fa-bars');
 
 
 toggleBtn.addEventListener('click', function()
 {
     sidebar.classList.toggle('BNtoggle');
+
+    if (sidebar.className === 'BN BNtoggle')
+    {
+        menu_bars.style.marginLeft = "18.5rem";
+    }
+    else
+    {
+        menu_bars.style.marginLeft = "5.5rem";
+        headerTxt.style.marginLeft = "8.7rem";
+    }
 });
 
-closeBtn.addEventListener('click', function()
+function openSideBar()
 {
-    sidebar.classList.remove('BNtoggle');
-});
+    sidebar.classList.toggle('BNtoggle');
+}
+
 
 function toggleDarkMode()
 {
@@ -26,6 +39,7 @@ function openMenuFunction()
 {
     menu.classList.toggle("menu-show");
 }
+
 
 
 
