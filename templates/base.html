@@ -21,7 +21,9 @@
 <nav class="BN">
         <ul class="Nav-BN">
             <li class="logo">
-                <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo">
+                <a href = "{% url 'Site_Educacional' %}">
+                    <img src= "{% static 'imagens/mini-logo.jpeg' %}" class="mini-logo">
+                </a>
                 <span class = "texto-logo">LMG ARTS</span>
             </li>
             <li class="nav-item">
@@ -63,6 +65,7 @@
     <div class="header">
         <button class="btnShow">
             <i class="fa-solid fa-bars"></i>
+<!--            <i class="fa-solid fa-arrow-down-from-line"></i>-->
         </button>
         <h1 onclick="toggleDarkMode()" class="header-Text">{%block TextoHeader%}{%endblock%}</h1>
         <div style="display: flex;">

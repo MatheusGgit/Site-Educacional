@@ -20,7 +20,6 @@ toggleBtn.addEventListener('click', function()
     else
     {
         menu_bars.style.marginLeft = "5.5rem";
-        headerTxt.style.marginLeft = "8.7rem";
     }
 });
 

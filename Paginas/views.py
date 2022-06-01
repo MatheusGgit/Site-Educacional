@@ -9,6 +9,11 @@ from hashlib import *
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
 from .models import Usuarios, Cursos, Video, CursosFavorito
+from django.core.files.storage import default_storage
+from django.conf import settings
+from django.core.files.base import ContentFile
+from datetime import date
+import os
 
 
 # Páginas - não é possível acessar sem estar logado
@@ -17,11 +22,9 @@ def Site_Educacional(request):
         return redirect('landingPage')
     email = request.session['email']
     user = get_object_or_404(Usuarios, email=email)
-    curso = get_object_or_404(Cursos, id = 1)
-    curso2 = get_object_or_404(Cursos, id = 2)
-    curso3 = get_object_or_404(Cursos, id = 3)
-    return render(request, 'Paginas/Site_Educacional.html', {'Usuarios': user, 'Cursos': curso,
-                                                             'Cursos2': curso2, 'Cursos3': curso3})
+    ids = 1, 2, 3
+    curso = Cursos.objects.filter(id__in = ids)
+    return render(request, 'Paginas/Site_Educacional.html', {'Usuarios': user, 'Cursos': curso})
 
 def Perfil(request):
     if not request.session['login']:
@@ -147,7 +150,13 @@ def redefPhoto(request):
             return render(request, 'Paginas/redefPhoto.html')
         else:
             uploaded_file = request.FILES['asgnmnt_file']
-            user = Usuarios.objects.filter(email = email).update(foto = f'fotos/2022/05/{uploaded_file}')
+            if uploaded_file:
+                path = default_storage.save(
+                    rf"fotos\2022\05\{uploaded_file}", ContentFile(uploaded_file.read()))
+                os.path.join(settings.MEDIA_ROOT, path)
+
+                Usuarios.objects.filter(email=email).update(foto=f'fotos/2022/05/{uploaded_file}')
+
             return redirect('Perfil')
 
 

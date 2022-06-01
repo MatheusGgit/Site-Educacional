@@ -223,7 +223,7 @@
     {
         width: 2rem;
         min-width: 2rem;
-        margin: 0 1.5rem;
+        margin: 0 1.7rem;
     }
 
     .logo
@@ -307,8 +307,8 @@
 
     .header h1
     {
-        transition: 600ms ease;
-        margin-left: 8.7rem;
+        transition: 200ms ease;
+        margin-left: 15rem;
         margin-top: 0px;
         margin-bottom: 0px;
         padding-top: 20px;
@@ -375,6 +375,16 @@
         transition: 560ms ease;
         margin-left: 5.5rem;
         margin-top: 0.5rem;
+        color: black;
+        font-size: 1.7rem;
+        position: absolute;
+    }
+
+    .fa-arrow-down-from-line
+    {
+        transition: 560ms ease;
+        margin-left: 5.5rem;
+        margin-top: 1rem;
         color: black;
         font-size: 1.7rem;
         position: absolute;
@@ -602,6 +612,7 @@ margin-right: 15px;
     cursor: pointer;
     margin-bottom: 1rem;
     color: black;
+    margin-right: 10px;
 }
 
 #catalogo .Dark .btn
@@ -657,7 +668,7 @@ margin-right: 15px;
 
 .busca
 {
-    width: 99%;
+    width: 92%;
     /* display: grid; */
     grid-template-columns: repeat(auto-fit, minmax(310px, auto));
     margin-bottom: 4%;
@@ -684,6 +695,8 @@ margin-right: 15px;
 .curso-info
 {
     margin-left: 1.5rem;
+    margin-bottom: 3px;
+    margin-top: 15px;
     text-decoration: none;
     color: #fff;
 }
