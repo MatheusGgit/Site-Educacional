@@ -1427,11 +1427,63 @@ margin-right: 15px;
 /* redefDesc */
 .descrição-change
 {
-    margin-top: 2rem;
-    border-radius: 5px;
-    width: 70%;
-    height: 70%;
+    width: 40%;
+    border: none;
+    background: none;
+    outline: none;
+    margin-top: 0.7rem;
+    border-bottom: black solid 2px;
 }
+
+.Dark .descrição-change
+{
+    border-bottom: white solid 2px;
+    color: white;
+}
+
+.enviarDesc
+{
+    position: absolute;
+    color: white;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    background-color: blue;
+    width: 7rem;
+    height: 3rem;
+    top: 62%;
+    right: 15%;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.enviarDesc:hover
+{
+    transform: scale(1.1);
+    transition: 300ms;
+}
+
+.form-Desc
+{
+    display: flex;
+    align-content: space-around;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+.label-Desc
+{
+    margin-top: 1rem;
+    color: black;
+}
+
+.Dark .label-Desc
+{
+    color: white;
+}
+
 /* fim redefDesc */
 
 /* redefNome */
@@ -1441,5 +1493,27 @@ margin-right: 15px;
     border-radius: 5px;
     width: 20%;
 }
-/* fim redefNome */
 
+.enviarNome
+{
+    position: absolute;
+    color: white;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    background-color: blue;
+    width: 7rem;
+    height: 3rem;
+    top: 45%;
+    right: 15%;
+    cursor: pointer;
+    transition: 300ms;
+}
+
+.enviarNome:hover
+{
+    transform: scale(1.1);
+    transition: 300ms;
+}
+
+/* fim redefNome */

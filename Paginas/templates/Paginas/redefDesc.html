@@ -9,12 +9,10 @@
     <div class="info">
         {% if Usuarios.foto %}
             <div id="pic">
-              <img class="bottom" src="/media/fotos/2022/05/editProfilePic.png" />
               <a href = "{% url 'redefPhoto' %}"><img class="top" src="{{Usuarios.foto.url}}" /></a>
             </div>
         {% else %}
             <div id="pic">
-              <img class = "bottom" src = "/media/fotos/2022/05/editProfilePic.png">
               <a href = "{% url 'redefPhoto' %}"><img class="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" /></a>
             </div>
         {%endif%}
@@ -30,10 +28,11 @@
             <div class = "account-info">
                 <div class = "desc">
                     <h2>Descrição:</h2>
-                    <form method = "POST">
+                    <form method = "POST" class="form-Desc">
                         {% csrf_token %}
-                        <input placeholder="Digite sua nova descrição" class = "descrição-change" id = "desc" name = "desc">
-                        <input type = "submit" value = "Enviar">
+                        <label for="desc" class="label-Desc">Digite sua nova descrição:</label>
+                        <input class = "descrição-change" id = "desc" name = "desc">
+                        <input class = "enviarDesc" type = "submit" value = "Enviar">
                     </form>
                 </div>
             </div>

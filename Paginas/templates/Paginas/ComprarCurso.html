@@ -10,13 +10,9 @@
                 {% if messages %}
                     <div class="alert">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                            {% for message in messages %}
-                                {% if messages.message == 'Curso já adquirido!' %}
-                                    <strong>ERRO!</strong> {{messages}} {{messages.tags}}
-                                {% else %}
-                                    <strong>SUCESSO!</strong> {{message}} {{messages.tags}}
-                                {%endif%}
-                            {% endfor %}
+                        {% for message in messages %}
+                            {{messages}} {{messages.tags}}
+                        {% endfor %}
                     </div>
                 {% endif %}
                 <div class="imagem-curso" style="background-image: url({{Cursos.foto.url}}); background-size: cover; background-repeat: no-repeat;background-position:center;">
