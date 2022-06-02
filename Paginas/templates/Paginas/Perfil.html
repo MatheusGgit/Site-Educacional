@@ -9,12 +9,10 @@
     <div class="info">
         {% if Usuarios.foto %}
             <div id="pic">
-              <img class="bottom" src="/media/fotos/2022/05/editProfilePic.png" />
               <a href = "{% url 'redefPhoto' %}"><img class="top" src="{{Usuarios.foto.url}}" /></a>
             </div>
         {% else %}
             <div id="pic">
-              <img class = "bottom" src = "/media/fotos/2022/05/editProfilePic.png">
               <a href = "{% url 'redefPhoto' %}"><img class="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"/></a>
             </div>
         {%endif%}
@@ -29,16 +27,13 @@
             <br>
             <div class = "account-info">
                 <div class = "desc">
-                    <h2>Descrição:</h2>
+                    <h2 style="margin-top: 1rem;">Descrição:</h2>
+                        <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
+                            <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição" style = "margin-left: 25rem;"></i>
+                        </a>
                         {% if Usuarios.descricao %}
-                            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
-                                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição" style = "margin-left: 25rem;"></i>
-                            </a>
                             <h3>{{Usuarios.descricao}}</h3>
                         {% else %}
-                            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
-                                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição" style = "margin-left: 25rem;"></i>
-                            </a>
                             <h4>Usuário não possui descrição</h4>
                         {% endif %}
                 </div>

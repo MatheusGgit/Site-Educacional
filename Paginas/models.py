@@ -32,7 +32,7 @@ class Cursos(models.Model):
     aulas = models.IntegerField()
     fonte = models.CharField(max_length=255)
     linkFonte = models.CharField(max_length=400)
-    foto = models.ImageField(blank=True, upload_to='fotos/%Y')
+    foto = models.ImageField(blank=True, upload_to='fotos/img_Cursos')
     objects = models.Manager()
     usuarioID = models.ManyToManyField(Usuarios, blank=True)
     categoriaID = models.ForeignKey(Categoria, on_delete=models.CASCADE, default=4)

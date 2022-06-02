@@ -296,6 +296,8 @@
         cursor: pointer;
         max-height: 64px;
         max-width: 64px;
+        min-height: 64px;
+        min-width: 64px;
     }
 
     .img-header:hover
@@ -353,8 +355,16 @@
 
     .menu .menu-text
     {
+        margin-left: 5px;
         color: black;
     }
+
+    .menu .menu-text:hover
+    {
+        transition: 250ms;
+        color: #6666a7;
+    }
+
     .header .menu-show
     {
         display: flex;
@@ -363,8 +373,8 @@
         right: 2%;
         top: 10%;
         background: white;
-        width: 12%;
-        height: 19vh;
+        width: 15%;
+        height: 22.8vh;
         box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25);
         text-decoration: none;
         z-index: 3;
@@ -372,7 +382,7 @@
 
     .fa-bars
     {
-        transition: 560ms ease;
+        transition: 600ms ease;
         margin-left: 5.5rem;
         margin-top: 0.5rem;
         color: black;
@@ -380,14 +390,9 @@
         position: absolute;
     }
 
-    .fa-arrow-down-from-line
+    .fa-bars:hover
     {
-        transition: 560ms ease;
-        margin-left: 5.5rem;
-        margin-top: 1rem;
-        color: black;
-        font-size: 1.7rem;
-        position: absolute;
+        transform: scale(1.2);
     }
 
     .Dark .fa-bars
@@ -673,8 +678,17 @@ margin-right: 15px;
     grid-template-columns: repeat(auto-fit, minmax(310px, auto));
     margin-bottom: 4%;
     margin-left: 21.7rem;
-    border-radius: 10px;
     padding: 10px;
+    border: none;
+    background: none;
+    outline: none;
+    border-bottom: black solid 2px;
+}
+
+.Dark .busca
+{
+    border-bottom: white solid 2px;
+    color: white;
 }
 
 .curso-zindex
@@ -743,7 +757,8 @@ margin-right: 15px;
     {
         display: flex;
         justify-content: space-between;
-        padding-left: 0px;
+        padding-left: 0;
+        padding-top: 6rem;
     }
 
     #perfil .username
@@ -760,6 +775,12 @@ margin-right: 15px;
         left: 42%;
     }
 
+    #pic img.bottom
+    {
+        height:28vh;
+        width:100px;
+    }
+
     #pic img
     {
         position:absolute;
@@ -771,7 +792,7 @@ margin-right: 15px;
 
     #pic img.top:hover
     {
-        opacity: 30%;
+        opacity: 50%;
     }
 
     .Dark .bottom
@@ -871,6 +892,7 @@ margin-right: 15px;
     {
         margin-left: 10px;
         margin-right: 10px;
+        margin-top: 1.3rem;
         font-size: 20px;
         color: black;
     }
@@ -879,7 +901,7 @@ margin-right: 15px;
     {
         margin-left: 10px;
         margin-right: 10px;
-        font-weight: 0px;
+        margin-top: 1rem;
         color: #8b8888;
     }
 
@@ -927,16 +949,16 @@ margin-right: 15px;
         text-decoration: none;
         color: #3d5ed9;
         text-align: center;
-        margin-top: 20px;
         font-size: 25px;
-        margin-left: 0px;
+        margin-left: 0;
     }
 
     #CC .fonte-info
     {
         display: flex;
-        flex-direction: row;
+        justify-content: space-between;
         margin-right: 20px;
+        padding-top: 1.3rem;
     }
 
     #CC .alert {
@@ -1077,6 +1099,7 @@ margin-right: 15px;
 
 .main .main-video .info-text
 {
+    margin-top: 1rem;
     margin-bottom: 15px;
     margin-left: 15px;
 }
@@ -1400,4 +1423,23 @@ margin-right: 15px;
     left: 0;
   }
 }
+
+/* redefDesc */
+.descrição-change
+{
+    margin-top: 2rem;
+    border-radius: 5px;
+    width: 70%;
+    height: 70%;
+}
+/* fim redefDesc */
+
+/* redefNome */
+.nome-redef
+{
+   margin-top: 2rem;
+    border-radius: 5px;
+    width: 20%;
+}
+/* fim redefNome */
 

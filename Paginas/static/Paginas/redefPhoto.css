@@ -33,3 +33,29 @@ main
     left: 35%;
     right: 50%;
 }
+
+.deletePhoto
+{
+    position: absolute;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 30%;
+    height: 50px;
+    background: #2691d9;
+    color: #fff;
+    top: 82.5%;
+    left: 3%;
+}
+
+.submitImage
+{
+    cursor: pointer;
+    border-radius: 20px;
+    width: 30%;
+    height: 50px;
+    background: #2691d9;
+    color: #fff;
+    position: absolute;
+    top: 82.5%;
+    left: 67%;
+}

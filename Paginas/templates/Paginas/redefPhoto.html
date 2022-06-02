@@ -11,16 +11,22 @@
 <body>
     <main class = "main">
         <h3>Selecione a foto</h3>
-         <form method = "POST" enctype="multipart/form-data">
+        <form method = "POST" enctype="multipart/form-data" name="changePhoto">
             {% csrf_token %}
             <input type="file" name="asgnmnt_file" id="asgnmnt_file" class="span8"
                 style="display:none;" onchange="fileSelected(this)">
-                <img id="asgnmnt_file_img" src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"
-                onclick="passFileUrl()" style="cursor:pointer; width: 50%; border-radius: 20px;">
-             <br><br><br>
-
-                <button type="submit" style="cursor: pointer; border-radius: 20px; width: 50%; height: 50px; background: #2691d9; color: #fff;">Enviar</button>
-       </form>
+            <img id="asgnmnt_file_img" src="https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg"
+            onclick="passFileUrl()" style="cursor:pointer; width: 50%; border-radius: 50%;">
+            <br>
+            <br>
+            <br>
+            <div style="display: flex; justify-content: space-evenly">
+                <button class="submitImage" type="submit">Enviar</button>
+            </div>
+        </form>
+         <a href="{% url 'deletePhoto' %}">
+            <button class = "deletePhoto">Excluir foto</button>
+        </a>
     </main>
 </body>
 <script>

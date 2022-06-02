@@ -70,8 +70,6 @@ def MeuAprendizado(request):
 
             return redirect('MeuAprendizado')
 
-
-
 def Catalogo(request):
     if not request.session['login']:
         return redirect('landingPage')
@@ -122,8 +120,10 @@ def redefNome(request):
             return render(request, 'Paginas/redefNome.html', {'Usuarios': user})
         else:
             nome = request.POST.get('nome')
-            Usuarios.objects.filter(email=email).update(nome=nome)
-
+            if nome == "" or nome == " ":
+                pass
+            else:
+                Usuarios.objects.filter(email=email).update(nome=nome)
 
             return redirect('Perfil')
 
@@ -136,8 +136,12 @@ def redefDesc(request):
         if request.method != 'POST':
             return render(request, 'Paginas/redefDesc.html', {'Usuarios': user})
         else:
+
             desc = request.POST.get('desc')
-            Usuarios.objects.filter(email=email).update(descricao = desc)
+            if desc == "" or desc == " ":
+                pass
+            else:
+                Usuarios.objects.filter(email=email).update(descricao = desc)
 
             return redirect('Perfil')
 
@@ -150,6 +154,7 @@ def redefPhoto(request):
             return render(request, 'Paginas/redefPhoto.html')
         else:
             uploaded_file = request.FILES['asgnmnt_file']
+
             if uploaded_file:
                 path = default_storage.save(
                     rf"fotos\2022\05\{uploaded_file}", ContentFile(uploaded_file.read()))
@@ -158,7 +163,6 @@ def redefPhoto(request):
                 Usuarios.objects.filter(email=email).update(foto=f'fotos/2022/05/{uploaded_file}')
 
             return redirect('Perfil')
-
 
 # Páginas que podem ser acessadas sem estar logado
 # Landing Page
@@ -308,3 +312,7 @@ def theme(request):
 
     return redirect('Site_Educacional')
 
+def deletePhoto(request):
+    email = request.session['email']
+    Usuarios.objects.filter(email = email).update(foto = "")
+    return redirect('Perfil')
