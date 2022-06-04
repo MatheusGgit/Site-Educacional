@@ -380,22 +380,34 @@
         z-index: 3;
     }
 
-    .fa-bars
+    #flecha
     {
         transition: 600ms ease;
         margin-left: 5.5rem;
         margin-top: 0.5rem;
-        color: black;
-        font-size: 1.7rem;
+        font-size: 20px;
         position: absolute;
+        background: blue;
+        width: 35px;
+        height: 30px;
+        border-radius: 4px;
+        color: white;
+        top: 12px;
+        padding: 5px;
+        /*transform: rotate(180deg);*/
     }
 
-    .fa-bars:hover
+    .Dark #flecha
+    {
+        background: #6c6b6b;
+    }
+
+     #flecha:hover
     {
         transform: scale(1.2);
     }
 
-    .Dark .fa-bars
+    .Dark #flecha
     {
         color: white;
     }
@@ -1515,5 +1527,4 @@ margin-right: 15px;
     transform: scale(1.1);
     transition: 300ms;
 }
-
 /* fim redefNome */

@@ -6,7 +6,7 @@ const teste = document.querySelector(".teste")
 const textoMudarTema = document.querySelector('.changeTheme')
 const btnToggleDM = document.body;
 const headerTxt = document.querySelector('.header-Text');
-const menu_bars = document.querySelector('.fa-bars');
+const menu_bars = document.querySelector('.fa-angle-right');
 
 
 toggleBtn.addEventListener('click', function()
@@ -16,10 +16,12 @@ toggleBtn.addEventListener('click', function()
     if (sidebar.className === 'BN BNtoggle')
     {
         menu_bars.style.marginLeft = "18.5rem";
+        menu_bars.style.transform = "rotate(180deg)";
     }
     else
     {
         menu_bars.style.marginLeft = "5.5rem";
+        menu_bars.style.transform = "rotate(0deg)";
     }
 });
 
