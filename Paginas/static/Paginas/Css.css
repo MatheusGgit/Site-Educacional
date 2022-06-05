@@ -1532,6 +1532,11 @@ margin-right: 15px;
     color: green;
 }
 
+.Dark .aulaFinalizada
+{
+    color: #8787fa;
+}
+
 .aulaSelecionada {
     background-color: gray !important;
 }

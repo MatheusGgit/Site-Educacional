@@ -2,9 +2,6 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.validators import validate_email
 from django.contrib import messages
-from .services.auth import Authentication
-from .services.redefinicao_email_auth import Authentication_email, Email_Redef
-from .services.cursosAuth import userCursos
 from hashlib import *
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
@@ -12,7 +9,6 @@ from .models import Usuarios, Cursos, Video, CursosFavorito, AulaAssistida
 from django.core.files.storage import default_storage
 from django.conf import settings
 from django.core.files.base import ContentFile
-from datetime import date
 from django.http import HttpResponse
 import os
 import json
@@ -192,7 +188,7 @@ def Redefinicao(request):
     if request.method != "POST":
         return render(request, 'Paginas/RedefinicaoSenha.html')
     else:
-        if Authentication_email().email_get(email):
+        if Usuarios.objects.filter(email = email).exists():
             request.session['EmailRedef'] = email
             return redirect('RecuperacaoSenha')
         else:
@@ -204,18 +200,14 @@ def Recuperacao(request):
         return render(request, 'Paginas/RecuperacaoSenha.html')
     else:
         senha = request.POST.get('senha')
-        senha2 = request.POST.get('senha2')
         email = request.session['EmailRedef']
 
-        if Email_Redef().email_redef(senha, senha2, email):
-            if len(senha) < 6:
-                messages.add_message(request, messages.ERROR, 'Senha deve ser maior do que 6 caracteres')
-                return render(request, 'Paginas/RecuperacaoSenha.html')
-            else:
-                return redirect('index')
-        else:
-            messages.add_message(request, messages.ERROR, 'Senhas devem ser iguais')
+        if len(senha) < 6:
+            messages.add_message(request, messages.ERROR, 'Senha deve ser maior do que 6 caracteres')
             return render(request, 'Paginas/RecuperacaoSenha.html')
+        else:
+            Usuarios.objects.filter(email = email).update(senha = senha)
+            return redirect('index')
 
 # Login
 def index(request):
@@ -227,7 +219,7 @@ def index(request):
         email = request.POST.get('email')
         senha = request.POST.get('senha')
 
-        if not Usuarios.objects.filter(email = email):
+        if not Usuarios.objects.filter(email = email, senha = senha):
             messages.add_message(request, messages.ERROR, 'Usuário ou senha incorretos')
             return render(request, 'Paginas/Login.html')
         else:
