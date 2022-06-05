@@ -78,8 +78,9 @@
 
                             </button>
                         </form>
-                                <p class = "curso-info-nome">Nome:</p>
+                                <p class = "curso-info-nome">Nome: </p>
                                 <p class = "curso-info">{{curso.nome}}</p>
+                                <p class = "curso-info">{{curso.total_assistidos}} / {{curso.total_videos}}</p>
                             </div>
                         </div>
                    {% else %}
@@ -89,8 +90,9 @@
                                                     background-size: cover;
                                                     background-position: center;">
                             <div class = "curso-zindex">
-                                <p class="curso-info-nome">Nome</p>
+                                <p class="curso-info-nome">Nome: </p>
                                 <p class = "curso-info">{{curso.nome}}</p>
+                                <p class = "assistido-info">{{curso.total_assistidos}} / {{curso.total_videos}}</p>
                             </div>
                         </div>
                    {% endif %}

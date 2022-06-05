@@ -20,4 +20,5 @@ urlpatterns = [
     path('RedefiniçãoDescrição', views.redefDesc, name='redefDesc'),
     path('RedefiniçãoFoto', views.redefPhoto, name='redefPhoto'),
     path('deletePhoto', views.deletePhoto, name='deletePhoto'),
+    path('aula/assistida', views.aula_assistida, name='aulaAssistida'),
 ]

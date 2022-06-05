@@ -8,13 +8,14 @@ from .services.cursosAuth import userCursos
 from hashlib import *
 from django.db.models import Q, Value
 from django.db.models.functions import Concat
-from .models import Usuarios, Cursos, Video, CursosFavorito
+from .models import Usuarios, Cursos, Video, CursosFavorito, AulaAssistida
 from django.core.files.storage import default_storage
 from django.conf import settings
 from django.core.files.base import ContentFile
 from datetime import date
+from django.http import HttpResponse
 import os
-
+import json
 
 # Páginas - não é possível acessar sem estar logado
 def Site_Educacional(request):
@@ -41,19 +42,25 @@ def MeuAprendizado(request):
         return redirect('landingPage')
     else:
         email = request.session['email']
-        userID = userCursos().email_get(email)
+        userID = Usuarios.objects.filter(email = email).first()
 
         if request.method != "POST":
             print(f'ID USUARIO: {userID}')
 
-            curso = Cursos.objects.filter(usuarioID=userID)
+            cursos = Cursos.objects.filter(usuarioID=userID)
             user = get_object_or_404(Usuarios, email=email)
             fav = CursosFavorito.objects.filter(usuario=userID)
+
+            for idx, curso in enumerate(cursos):
+                videos = Video.objects.filter(cursoID=curso).count()
+                cursos[idx].total_videos = videos
+                aulas = AulaAssistida.objects.filter(curso=curso, usuario=user).count()
+                cursos[idx].total_assistidos = aulas
 
             for i in fav:
                 print(f'Favoritos: {i}')
 
-            return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': curso, 'Usuarios': user, 'favorite': fav})
+            return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': cursos, 'Usuarios': user, 'favorite': fav})
 
         else:
             idcurso = request.POST.get('btnFav')
@@ -86,6 +93,8 @@ def ComprarCurso(request, curso_id):
     if not request.session['login']:
         return redirect('landingPage')
     curso = get_object_or_404(Cursos, id=curso_id)
+    videos = Video.objects.filter(cursoID=curso).count()
+    curso.total_videos = videos
 
     if request.method != "POST":
         email = request.session['email']
@@ -97,6 +106,7 @@ def ComprarCurso(request, curso_id):
 
         c1 = get_object_or_404(Cursos, id=curso_id)
         c1.usuarioID.add(u1)
+        # TODO: Arrumar mensagem
         messages.add_message(request, messages.SUCCESS, 'Curso Adquirido!')
         return render(request, 'Paginas/ComprarCurso.html', {'Cursos': curso, 'Usuarios': u1})
 
@@ -108,7 +118,12 @@ def PlayerVideo(request, curso_id):
     videos = Video.objects.filter(cursoID = curso_id)
     email = request.session['email']
     user = get_object_or_404(Usuarios, email=email)
-    return render(request, 'Paginas/PlayerVideo.html', {'Cursos': curso, 'Videos': videos, 'Usuarios': user})
+    aulas = AulaAssistida.objects.filter(curso_id=curso_id, usuario=user).all()
+    return render(
+        request,
+        'Paginas/PlayerVideo.html',
+        {'Cursos': curso, 'Videos': videos, 'Usuarios': user, 'Aulas': aulas}
+    )
 
 def redefNome(request):
     if not request.session['login']:
@@ -212,7 +227,7 @@ def index(request):
         email = request.POST.get('email')
         senha = request.POST.get('senha')
 
-        if not Authentication().login(email, senha):
+        if not Usuarios.objects.filter(email = email):
             messages.add_message(request, messages.ERROR, 'Usuário ou senha incorretos')
             return render(request, 'Paginas/Login.html')
         else:
@@ -316,3 +331,18 @@ def deletePhoto(request):
     email = request.session['email']
     Usuarios.objects.filter(email = email).update(foto = "")
     return redirect('Perfil')
+
+def aula_assistida(request):
+    id_aula = json.loads(request.body)['aula']
+    id_curso = json.loads(request.body)['curso']
+    email = request.session['email']
+
+    usuario = Usuarios.objects.filter(email=email).first()
+    video = Video.objects.filter(id=id_aula).first()
+    curso = Cursos.objects.filter(id=id_curso).first()
+
+    if not AulaAssistida.objects.filter(usuario=usuario, video=video, curso=curso).exists():
+        aula = AulaAssistida(usuario=usuario, video=video, curso=curso, assistido=True)
+        aula.save()
+
+    return HttpResponse({'body': request.POST.get('aula')})

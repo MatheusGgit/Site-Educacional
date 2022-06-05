@@ -55,3 +55,11 @@ class CursosFavorito(models.Model):
     curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, blank=True, null=True)
 
     objects = models.Manager()
+
+class AulaAssistida(models.Model):
+    assistido = models.BooleanField(default=False)
+    usuario = models.ForeignKey(Usuarios, on_delete=models.CASCADE, blank=True, null=True)
+    curso = models.ForeignKey(Cursos, on_delete=models.CASCADE, blank=True, null=True)
+    video = models.ForeignKey(Video, on_delete=models.CASCADE, blank=True, null=True)
+
+    objects = models.Manager()

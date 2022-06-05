@@ -30,10 +30,27 @@
             </div>
         </div>
         <div class="playlist">
+            {%csrf_token%}
+            <input type="hidden" id="curso" value="{{Cursos.id}}">
             {% for video in Videos %}
-            <a class = "videoBtn" id = "{{video.video.url}}">
+            <a class="videoBtn" id="{{video.id}}" data-url="{{video.video.url}}">
                 <div class="videos">
-                    <input type = "checkbox" value="visto" class = "cb" id = "{{video.video.url}}">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" fill="none" class="finalizado
+                    {% for aula in Aulas %}
+                        {% if aula.video_id == video.id %}
+                            {% if aula.assistido %}
+                                aulaFinalizada
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}">
+                        <path d="M8 14.667A6.667 6.667 0 108 1.333a6.667 6.667 0 000 13.334z"
+                              stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round">
+                        </path>
+                        <path d="M10.667 6.667L7 9.867 5.333 8.412" stroke="currentColor" stroke-width="2"
+                              stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
                     <h2 class = "titulo">
                         {{video.nomeAula}}
                     </h2>

@@ -1527,4 +1527,12 @@ margin-right: 15px;
     transform: scale(1.1);
     transition: 300ms;
 }
+
+.aulaFinalizada {
+    color: green;
+}
+
+.aulaSelecionada {
+    background-color: gray !important;
+}
 /* fim redefNome */
