@@ -10,6 +10,7 @@ from django.core.files.storage import default_storage
 from django.conf import settings
 from django.core.files.base import ContentFile
 from django.http import HttpResponse
+import random
 import os
 import json
 
@@ -19,7 +20,11 @@ def Site_Educacional(request):
         return redirect('landingPage')
     email = request.session['email']
     user = get_object_or_404(Usuarios, email=email)
-    ids = 1, 2, 3
+    max_Cursos = Cursos.objects.all().count()
+
+    ids = []
+    for x in range(3):
+        ids.append(random.randint(1, max_Cursos))
     curso = Cursos.objects.filter(id__in = ids)
     return render(request, 'Paginas/Site_Educacional.html', {'Usuarios': user, 'Cursos': curso})
 
@@ -179,7 +184,7 @@ def redefPhoto(request):
 # Landing Page
 def landingPage(request):
     request.session['login'] = False
-    return render(request, 'Paginas/landingPage.html')
+    return render(request, 'Paginas/index.html')
 
 # RedefinicaoSenha - RecuperacaoSenha
 def Redefinicao(request):
