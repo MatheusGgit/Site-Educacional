@@ -28,33 +28,26 @@
 </div>
 
 {% if Cursos %}
-<div class = 'cursos'>
+<div class = 'course-list'>
     {% for curso in Cursos %}
-            {% if curso.foto %}
                 <a href="{% url 'ComprarCurso' curso.id %}" class = "hrefCurso {{curso.categoriaID}}">
-                    <div class = "filterDiv {{curso.categoriaID}}" style="background-image: url({{curso.foto.url}});
-                                                                            background-repeat: no-repeat;
-                                                                            background-size: cover;
-                                                                            background-position: center; display: block">
-                        <div class = "curso-zindex">
+                        {% if curso.foto %}
+                            <div class = "filterDiv {{curso.categoriaID}}" style="background-image: url({{curso.foto.url}});
+                                                                                background-repeat: no-repeat;
+                                                                                background-size: cover;
+                                                                                background-position: center; display: block">
+                        {% else %}
+                            <div class = "filterDiv {{curso.categoriaID}}" style="background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
+                                                                              background-repeat: no-repeat;
+                                                                              background-size: cover;
+                                                                              background-position: center; display: block">
+                        {% endif %}
+                        <div class = "course-information">
                             <p class = "curso-info">Nome:</p>
                             <p class = "curso-info">{{curso.nome}}</p>
                         </div>
                     </div>
                 </a>
-            {% else %}
-                <a href="{% url 'ComprarCurso' curso.id %}" class = "hrefCurso {{curso.categoriaID}}">
-                    <div class = "filterDiv {{curso.categoriaID}}" style="background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
-                                                                          background-repeat: no-repeat;
-                                                                          background-size: cover;
-                                                                          background-position: center; display: block">
-                        <div class = "curso-zindex">
-                            <p class = "curso-info">Nome:</p>
-                            <p class = "curso-info">{{curso.nome}}</p>
-                        </div>
-                    </div>
-                </a>
-            {% endif %}
     {% endfor %}
 </div>
 <div class="pagination">

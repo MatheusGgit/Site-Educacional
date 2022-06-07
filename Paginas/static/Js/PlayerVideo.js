@@ -1,22 +1,27 @@
 window.send = 1;
-function loadVideo()
-{
-    btn = document.querySelectorAll('.videoBtn')
-    btnPlay = document.querySelector('.playBtn')
-    var urlVideo = btn[0].getAttribute('data-url');
-    video.src = urlVideo;
-    video.play()
-    btnPlay.style.display = "none";
-    console.log(urlVideo);
-
-    // TODO: Marcar como selecionado
-    window.id_aula = btn.getAttribute('id')
-}
-
 let video = document.querySelector('video');
 video.ontimeupdate = function() {videoTracking()};
-let cb = document.querySelector('.cb');
-desc = document.querySelector('.descricao-video')
+desc = document.querySelector('.descricao-video');
+window.id_aula = 0;
+
+function loadVideo()
+{
+    btn = document.querySelectorAll('.videoBtn');
+    btnPlay = document.querySelector('.playBtn');
+    var urlVideo = btn[0].getAttribute('data-url');
+    video.src = urlVideo;
+    btnPlay.style.display = "none";
+    console.log(urlVideo);
+    window.id_aula = btn[0].getAttribute('id')
+    btns()
+}
+
+function btns()
+{
+    let atual = document.querySelector('.videos')
+    limparSelecionados(atual)
+    addClassList(atual)
+}
 
 document.querySelectorAll('.videoBtn').forEach(btn =>
 {
@@ -29,12 +34,15 @@ document.querySelectorAll('.videoBtn').forEach(btn =>
         video.src = url;
 
         let atual = btn.querySelector('.videos')
-
         limparSelecionados(atual)
-
-        atual.classList.add('aulaSelecionada')
+        addClassList(atual)
     })
 })
+
+function addClassList(atual)
+{
+    atual.classList.add('aulaSelecionada')
+}
 
 function limparSelecionados(atual)
 {
@@ -68,7 +76,7 @@ function enviarAulaFinalizada(id)
 {
     let data = {
         aula: id,
-        curso: document.getElementById('curso').value
+        curso: document.getElementById('curso').value,
     }
 
     fetch("/aula/assistida", {
@@ -88,4 +96,4 @@ function enviarAulaFinalizada(id)
       });
 }
 
-onload(loadVideo())
+document.addEventListener(onload, loadVideo())

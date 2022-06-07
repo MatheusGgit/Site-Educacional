@@ -107,8 +107,8 @@ def ComprarCurso(request, curso_id):
 
         c1 = get_object_or_404(Cursos, id=curso_id)
         c1.usuarioID.add(u1)
-        # TODO: Arrumar mensagem
-        messages.add_message(request, messages.SUCCESS, 'Curso Adquirido!')
+
+        messages.add_message(request, messages.SUCCESS, 'Curso adquirido!')
         return render(request, 'Paginas/ComprarCurso.html', {'Cursos': curso, 'Usuarios': u1})
 
 def PlayerVideo(request, curso_id):
@@ -211,6 +211,7 @@ def Recuperacao(request):
             messages.add_message(request, messages.ERROR, 'Senha deve ser maior do que 6 caracteres')
             return render(request, 'Paginas/RecuperacaoSenha.html')
         else:
+            senha = get_password_hash(senha)
             Usuarios.objects.filter(email = email).update(senha = senha)
             return redirect('index')
 
@@ -223,6 +224,7 @@ def index(request):
     else:
         email = request.POST.get('email')
         senha = request.POST.get('senha')
+        senha = get_password_hash(senha)
 
         if not Usuarios.objects.filter(email = email, senha = senha):
             messages.add_message(request, messages.ERROR, 'Usuário ou senha incorretos')

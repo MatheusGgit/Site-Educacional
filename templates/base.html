@@ -72,7 +72,7 @@
             {% if Usuarios.foto %}
                 <img class = "img-header" src = "{{Usuarios.foto.url}}" onclick="openMenuFunction()">
             {% else %}
-                <img class = "img-header" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"onclick="openMenuFunction()">
+                <img class = "img-header" src="{%static 'imagens/no-userimage.jpg'%}" onclick="openMenuFunction()">
             {%endif%}
         </div>
         <div class = "menu">

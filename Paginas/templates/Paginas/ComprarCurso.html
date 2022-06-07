@@ -4,6 +4,7 @@
 {%block TextoHeader%}Catálogo{%endblock%}
 {%block title%}Comprar Curso{%endblock%}
 {%block conteudo%}
+<!--TODO: deixar mais bonito pq ta feio-->
     <section class="maingrid">
         <div>
             {% if Cursos.foto %}
@@ -11,7 +12,7 @@
                     <div class="alert">
                         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                         {% for message in messages %}
-                            {{messages}} {{messages.tags}}
+                            {{message}}
                         {% endfor %}
                     </div>
                 {% endif %}

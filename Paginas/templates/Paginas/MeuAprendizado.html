@@ -4,101 +4,88 @@
 {%block id%}<html lang="en">{%endblock%}
 {%block title%}Meu Aprendizado{%endblock%}
 {%block TextoHeader%}Meu Aprendizado{%endblock%}
+
 {%block conteudo%}
-{% for fav in favorites %}
-1
-{% endfor %}
 <h1 style="margin-bottom: 1rem;">Favoritos:</h1>
-    {% if favorite %}
-        <div class="cursos">
-        {% for fav in favorite %}
+{% if favorite %}
+    <div class="cursos">
+    {% for fav in favorite %}
+            <a href = "{% url 'PlayerVideo' fav.curso.id %}">
                 {% if fav.curso.foto %}
-                <a href = "{% url 'PlayerVideo' fav.curso.id %}">
                     <div class = "cursox" style="background-image: url({{fav.curso.foto.url}});
-                                                                background-repeat: no-repeat;
-                                                                background-size: cover;
-                                                                background-position: center;
-                                                                width: 23rem;
-                                                                height: 22rem;">
+                                                            background-repeat: no-repeat;
+                                                            background-size: cover;
+                                                            background-position: center;
+                                                            width: 23rem;
+                                                            height: 22rem;">
+                {% else %}
+                    <!--TODO: ARRUMAR O URL DA FOTO-->
+                    <div class = "cursox" style="
+                                                background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
+                                                background-repeat: no-repeat;
+                                                background-size: cover;
+                                                background-position: center;">
+                {% endif %}
                         <div class = "curso-zindex">
-                            <p class = "curso-info">Nome:</p>
-                            <p class = "curso-info">{{fav.curso}}</p>
+                            <h3 class="course-information-text" style="margin-top: 1rem">Nome:</h3>
+                            <h3 class="course-information-text">{{fav.curso}}</h3>
                         </div>
                     </div>
-                </a>
-                {% else %}
-                    <a href = "{% url 'PlayerVideo' fav.curso.id %}">
-                        <div class = "cursox" style="
-                                                    background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
-                                                    background-repeat: no-repeat;
-                                                    background-size: cover;
-                                                    background-position: center;">
-                            <div class = "curso-zindex">
-                                <p class = "curso-info">Nome:</p>
-                                <p class = "curso-info">{{fav.curso}}</p>
-                            </div>
-                        </div>
-                    </a>
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% else %}
+            </a>
+        {% endfor %}
+    </div>
+{% else %}
     <div style="text-align: center; top: 10%;">
         <img class = "lupa-icon" src = "https://cdn-icons-png.flaticon.com/512/3721/3721746.png" id = "lupa-icon1" alt="foto">
         <h4 style="color: #949494;">Parece que você não possui nenhum curso favorito</h4>
     </div>
-    {% endif %}
+{% endif %}
 
 <h1 style="margin-top: 1.5rem; margin-bottom: 1rem">Meus Cursos:</h1>
 {% if Cursos %}
     <div class = 'cursos'>
         {% for curso in Cursos %}
-                <a href="{% url 'PlayerVideo' curso.id %}">
-                   {% if curso.foto %}
-                        <div class = "cursox" style="background-image: url({{curso.foto.url}});
-                                                                                background-repeat: no-repeat;
-                                                                                background-size: cover;
-                                                                                background-position: center;">
-                            <div class = "curso-zindex">
-                                <form method="POST">
-                            {% csrf_token %}
-                            <button type="submit"
-                                    style="
-                                    background: transparent;
-                                    border: transparent;
-                                    cursor: pointer;"
-                                    value="{{curso.id}}"
-                                    name = "btnFav">
+            <a href="{% url 'PlayerVideo' curso.id %}">
+                {% if curso.foto %}
+                    <div class = "cursox" style="background-image: url({{curso.foto.url}});
+                                                        background-repeat: no-repeat;
+                                                        background-size: cover;
+                                                        background-position: center;">
+                {% else %}
+                    <div class = "cursox" style="
+                                                background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
+                                                background-repeat: no-repeat;
+                                                background-size: cover;
+                                                background-position: center;">
+                {% endif %}
+                <div class = "curso-zindex">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit"
+                            style="
+                            background: transparent;
+                            border: transparent;
+                            cursor: pointer;"
+                            value="{{curso.id}}"
+                            name = "btnFav">
 
-                                        {% if curso.id in fav.curso %}
-                                            <i class="fa-solid fa-star" style="color: yellow"></i>
-                                        {% else %}
-                                            <i class="fa-solid fa-star"></i>
-                                        {% endif %}
+                                {% if curso.id in fav.curso %}
+                                    <i class="fa-solid fa-star" style="color: yellow"></i>
+                                {% else %}
+                                    <i class="fa-solid fa-star"></i>
+                                {% endif %}
 
-                            </button>
-                        </form>
-                                <p class = "curso-info-nome">Nome: </p>
-                                <p class = "curso-info">{{curso.nome}}</p>
-                                <p class = "curso-info">{{curso.total_assistidos}} / {{curso.total_videos}}</p>
-                            </div>
-                        </div>
-                   {% else %}
-                        <div class = "cursox" style="
-                                                    background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
-                                                    background-repeat: no-repeat;
-                                                    background-size: cover;
-                                                    background-position: center;">
-                            <div class = "curso-zindex">
-                                <p class="curso-info-nome">Nome: </p>
-                                <p class = "curso-info">{{curso.nome}}</p>
-                                <p class = "assistido-info">{{curso.total_assistidos}} / {{curso.total_videos}}</p>
-                            </div>
-                        </div>
-                   {% endif %}
-                </a>
-        {% endfor %}
+                        </button>
+                    </form>
+<!--                    <p class = "curso-info-nome">Nome: </p>-->
+<!--                    <p class = "curso-info">{{curso.nome}}</p>-->
+<!--                    <p class = "curso-info">{{curso.total_assistidos}} / {{curso.total_videos}}</p>-->
+                    <h3 class="course-information-text">Nome:</h3>
+                    <h3 class="course-information-text">{{curso.nome}}</h3>
+                    <h3 class="course-information-text">{{curso.total_assistidos}} / {{curso.total_videos}}</h3>
+                </div>
     </div>
+        {% endfor %}
 {% else %}
     <div style="text-align: center;">
         <img class = "lupa-icon" src = "https://cdn-icons-png.flaticon.com/512/3721/3721746.png">
