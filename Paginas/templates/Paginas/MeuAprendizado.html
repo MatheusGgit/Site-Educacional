@@ -19,9 +19,8 @@
                                                             width: 23rem;
                                                             height: 22rem;">
                 {% else %}
-                    <!--TODO: ARRUMAR O URL DA FOTO-->
                     <div class = "cursox" style="
-                                                background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
+                                                background-image: url({%static 'imagens/no-image.jpg'%});
                                                 background-repeat: no-repeat;
                                                 background-size: cover;
                                                 background-position: center;">
@@ -53,10 +52,15 @@
                                                         background-position: center;">
                 {% else %}
                     <div class = "cursox" style="
-                                                background-image: url(https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg);
+                                                background-image: url({%static 'imagens/no-image.jpg'%});
                                                 background-repeat: no-repeat;
                                                 background-size: cover;
                                                 background-position: center;">
+                {% endif %}
+                {% if curso.total_assistidos == curso.total_videos %}
+                    <div class="course-completed">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
                 {% endif %}
                 <div class = "curso-zindex">
                     <form method="POST">
@@ -68,12 +72,7 @@
                             cursor: pointer;"
                             value="{{curso.id}}"
                             name = "btnFav">
-
-                                {% if curso.id in fav.curso %}
-                                    <i class="fa-solid fa-star" style="color: yellow"></i>
-                                {% else %}
-                                    <i class="fa-solid fa-star"></i>
-                                {% endif %}
+                            <i class="fa-solid fa-star"></i>
 
                         </button>
                     </form>
@@ -82,7 +81,12 @@
 <!--                    <p class = "curso-info">{{curso.total_assistidos}} / {{curso.total_videos}}</p>-->
                     <h3 class="course-information-text">Nome:</h3>
                     <h3 class="course-information-text">{{curso.nome}}</h3>
-                    <h3 class="course-information-text">{{curso.total_assistidos}} / {{curso.total_videos}}</h3>
+
+                    {% if curso.total_assistidos == curso.total_videos %}
+                        <h3 class="course-information-text" style="color: yellow; margin-top: 0.3rem;">Curso finalizado</h3>
+                    {% else %}
+                        <h3 class="course-information-text">{{curso.total_assistidos}} / {{curso.total_videos}}</h3>
+                    {% endif %}
                 </div>
     </div>
         {% endfor %}

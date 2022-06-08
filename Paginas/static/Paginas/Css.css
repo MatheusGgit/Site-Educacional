@@ -508,6 +508,27 @@
 /*   Meu aprendizado (algumas classes são identicas ao Catálogo) */
 /* { */
 
+    .course-completed
+    {
+        background: blue;
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        top: 0;
+        right: 5%;
+        /*box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.25)*/
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        text-align: center;
+    }
+
+    .fa-award
+    {
+        color: yellow;
+        font-size: 2rem;
+        margin-top: 0.3rem;
+    }
+
     .course-information-text
     {
         text-decoration: none;
@@ -804,8 +825,8 @@ margin-right: 15px;
 {
     transition: 300ms;
     border-radius: 100%;
-    min-width: 31.5vh;
-    max-width: 31.5vh;
+    min-width: 30vh;
+    max-width: 30vh;
     min-height: 30vh;
     max-height: 30vh;
 }
@@ -1049,6 +1070,7 @@ margin-right: 15px;
 
 /* playerVideo */
 /*{*/
+
 .Dark .main .playlist
 {
     background-color: #323232;
@@ -1550,9 +1572,16 @@ margin-right: 15px;
 /* redefNome */
 .nome-redef
 {
-   margin-top: 2rem;
-    border-radius: 5px;
-    width: 20%;
+    width: 20rem;
+    border: none;
+    background: none;
+    outline: none;
+    margin-top: 0.7rem;
+    border-bottom: black solid 2px;
+}
+.Dark .nome-redef
+{
+    border-bottom: white solid 2px;
 }
 
 .enviarNome
@@ -1586,7 +1615,12 @@ margin-right: 15px;
     color: #8787fa;
 }
 
-.aulaSelecionada {
+.aulaSelecionada
+{
+    background-color: rgb(212, 238, 250) !important;
+}
+
+.Dark .aulaSelecionada {
     background-color: gray !important;
 }
 /* fim redefNome */

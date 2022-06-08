@@ -5,50 +5,43 @@
 {%block TextoHeader%}Perfil{%endblock%}
 {%block title%}Perfil{%endblock%}
 {%block conteudo%}
-<div class="mainContent">
-    <div class="info">
-        {% if Usuarios.foto %}
-            <div id="pic">
-              <a href = "{% url 'redefPhoto' %}"><img class="top" src="{{Usuarios.foto.url}}" /></a>
-            </div>
-        {% else %}
-            <div id="pic">
-              <a href = "{% url 'redefPhoto' %}"><img class="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png" /></a>
-            </div>
-        {%endif%}
-
+<div>
+    <div class="user-profile-pic">
+        <a href = "{% url 'redefPhoto' %}">
+            {% if Usuarios.foto %}
+                <img class="top" src="{{Usuarios.foto.url}}">
+            {% else %}
+                <img class="top" src="{%static 'imagens/no-userimage.jpg'%}">
+            {%endif%}
+        </a>
         <div class = "userName">
             <form method = "POST" class="form-Desc">
-                        {% csrf_token %}
-                        <label for="desc" class="label-Desc">Digite seu novo nome:</label>
-                        <input class = "descrição-change" id = "desc" name = "desc">
-                        <input class = "enviarNome" type = "submit" value = "Enviar">
-                    </form>
-        </div>
-        <div>
-            <br>
-            <div class = "account-info">
-                <div class = "desc">
-                    <h2>Descrição:</h2>
-                        {% if Usuarios.descricao %}
-                            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
-                                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição" style = "margin-left: 25rem;"></i>
-                            </a>
-                            <h3>{{Usuarios.descricao}}</h3>
-                        {% else %}
-                            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
-                                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição" style = "margin-left: 25rem;"></i>
-                            </a>
-                            <h4>Usuário não possui descrição</h4>
-                        {% endif %}
-                </div>
-            </div>
-            <ul class = "infos">
-                <h1 class = "left">Meu email: {{Usuarios.email}}</h1>
-                <h1 class = "right">Criado em: {{Usuarios.data_criacao|date:'d/m/y H:m'}}</h1>
-            </ul>
+                {% csrf_token %}
+                <label for="desc" class="label-Desc">Digite seu novo nome:</label>
+                <input class = "nome-redef" id = "desc" name = "desc">
+                <input class = "enviarNome" type = "submit" value = "Enviar">
+            </form>
         </div>
     </div>
-</div>
+    <div class = "account-description">
+        <h2>Descrição:</h2>
+        <div class="description">
+            <div class="description-limitator">
+                {% if Usuarios.descricao %}
+                    <h3>{{Usuarios.descricao}}</h3>
+                {% else %}
+                    <h4>Usuário não possui descrição</h4>
+                {% endif %}
+            </div>
+            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
+                <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição"></i>
+            </a>
+        </div>
+    </div>
+    <div class="user-information">
+        <h2>Email: {{Usuarios.email}}</h2>
+
+        <h2>Data de criação: {{Usuarios.data_criacao|date:'d/m/y H:m'}}</h2>
+    </div>
 </div>
 {%endblock%}

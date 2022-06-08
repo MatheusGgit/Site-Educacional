@@ -20,7 +20,7 @@
         <div class="user-username">
             <h2 style="margin-top: 1.5rem;">{{Usuarios.nome}}</h2>
 
-            <a href = "{% url 'redefDesc' %}" style="text-decoration: none;">
+            <a href = "{% url 'redefNome' %}" style="text-decoration: none;">
                 <i class="fa-solid fa-pen-to-square" id = "logo" title = "Editar Descrição"></i>
             </a>
         </div>
@@ -43,7 +43,6 @@
     <div class="user-information">
         <h2>Email: {{Usuarios.email}}</h2>
 
-        <!--TODO: tentar ver se eu consigo arrumar o horario que está no fuso horario americano-->
         <h2>Data de criação: {{Usuarios.data_criacao|date:'d/m/y H:m'}}</h2>
     </div>
 </div>

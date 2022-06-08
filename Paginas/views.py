@@ -14,6 +14,7 @@ import random
 import os
 import json
 
+# todo: atualizar casos de uso na documentação
 # Páginas - não é possível acessar sem estar logado
 def Site_Educacional(request):
     if not request.session['login']:
@@ -61,7 +62,8 @@ def MeuAprendizado(request):
             for i in fav:
                 print(f'Favoritos: {i}')
 
-            return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': cursos, 'Usuarios': user, 'favorite': fav})
+            return render(request, 'Paginas/MeuAprendizado.html', {'Cursos': cursos, 'Usuarios': user,
+                                                                   'favorite': fav})
 
         else:
             idcurso = request.POST.get('btnFav')
