@@ -14,8 +14,8 @@ import random
 import os
 import json
 
-# todo: atualizar casos de uso na documentação
 # Páginas - não é possível acessar sem estar logado
+# todo: propaganda acima do sobre nos
 def Site_Educacional(request):
     if not request.session['login']:
         return redirect('landingPage')

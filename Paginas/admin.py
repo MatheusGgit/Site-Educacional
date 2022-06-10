@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Cursos, Usuarios, Video, Categoria, Theme, CursosFavorito
+from .models import Cursos, Usuarios, Video, Categoria, Theme, CursosFavorito, AulaAssistida
 
 class UsuariosAdmin(admin.ModelAdmin):
     list_display = ('id', 'nome', 'email', 'data_criacao')
@@ -14,3 +14,4 @@ admin.site.register(Video)
 admin.site.register(Categoria)
 admin.site.register(Theme)
 admin.site.register(CursosFavorito)
+admin.site.register(AulaAssistida)

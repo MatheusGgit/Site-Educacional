@@ -59,3 +59,16 @@ main
     top: 82.5%;
     left: 67%;
 }
+
+#redefPhoto-btn
+{
+    border: transparent;
+    transition: 300ms;
+}
+
+#redefPhoto-btn:hover
+{
+    transition: 300ms;
+    transform: scale(1.1);
+}
+
