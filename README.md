@@ -12,7 +12,7 @@ No terminal digite:
 
 4 - É necessário popular o banco antes de começar a usar (Comentado o passo a passo de como fazer no arquivo views.py dentro da pasta paginas)
 
-Equipe:
+Equipe TDS-3:
 
 - Matheus Garcia 
 
