@@ -8,4 +8,7 @@ No terminal digite:
 2 - python manage.py migrate  
 3 - python manage.py runserver
 
-Projeto feito inteiramente com a biblioteca Django
+Equipe:
+Matheus Garcia 
+Leonardo Braga
+Guilherme Alves
