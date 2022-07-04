@@ -14,8 +14,11 @@ import random
 import os
 import json
 
+# Projeto necessita de internet
+# É necessário criar os cursos no admin do django -> Criando um super user com 'python manage.py createsuperuser'
+# no terminal, depois acesse o urldosite/admin EX: http://127.0.0.1:8000/admin
+
 # Páginas - não é possível acessar sem estar logado
-# todo: propaganda acima do sobre nos
 def Site_Educacional(request):
     if not request.session['login']:
         return redirect('landingPage')
@@ -23,6 +26,7 @@ def Site_Educacional(request):
     user = get_object_or_404(Usuarios, email=email)
     max_Cursos = Cursos.objects.all().count()
 
+    # Seleciona cursos aleatorios e quantias aleatorias para mostrar na pagina inicial
     ids = []
     for x in range(3):
         ids.append(random.randint(1, max_Cursos))
@@ -33,6 +37,7 @@ def Perfil(request):
     if not request.session['login']:
         return redirect('landingPage')
 
+    # Executando um select para receber o usuario logado
     email = request.session['email']
     user = get_object_or_404(Usuarios, email=email)
 
@@ -46,6 +51,7 @@ def MeuAprendizado(request):
         email = request.session['email']
         userID = Usuarios.objects.filter(email = email).first()
 
+        # Mostra quais cursos o usuario possui e seu progresso
         if request.method != "POST":
             print(f'ID USUARIO: {userID}')
 
@@ -66,6 +72,7 @@ def MeuAprendizado(request):
                                                                    'favorite': fav})
 
         else:
+            # Caso o html envie em 'POST'
             idcurso = request.POST.get('btnFav')
             u = get_object_or_404(Usuarios, email=email)
 
@@ -84,6 +91,7 @@ def Catalogo(request):
     if not request.session['login']:
         return redirect('landingPage')
 
+    # Recebe todos os cursos cadastrados e cria uma paginação de até 3 cursos por pagina
     curso = Cursos.objects.order_by('-id')
     paginator = Paginator(curso, 3)
     page = request.GET.get('p')
@@ -104,6 +112,7 @@ def ComprarCurso(request, curso_id):
         user = get_object_or_404(Usuarios, email=email)
         return render(request, 'Paginas/ComprarCurso.html', {'Cursos': curso, 'Usuarios': user})
     else:
+        # Cadastra que o usuario possui o curso
         email = request.session['email']
         u1 = get_object_or_404(Usuarios, email=email)
 
@@ -117,6 +126,7 @@ def PlayerVideo(request, curso_id):
     if not request.session['login']:
         return redirect('landingPage')
 
+    # Mostra os videos e quais videos foram visto ou não
     curso = get_object_or_404(Cursos, id = curso_id)
     videos = Video.objects.filter(cursoID = curso_id)
     email = request.session['email']
@@ -171,6 +181,7 @@ def redefPhoto(request):
         if request.method != 'POST':
             return render(request, 'Paginas/redefPhoto.html')
         else:
+
             uploaded_file = request.FILES['asgnmnt_file']
 
             if uploaded_file:
@@ -181,6 +192,8 @@ def redefPhoto(request):
                 Usuarios.objects.filter(email=email).update(foto=f'fotos/2022/05/{uploaded_file}')
 
             return redirect('Perfil')
+
+# Fim
 
 # Páginas que podem ser acessadas sem estar logado
 # Landing Page
@@ -347,3 +360,5 @@ def aula_assistida(request):
         aula.save()
 
     return HttpResponse({'body': request.POST.get('aula')})
+
+# Fim

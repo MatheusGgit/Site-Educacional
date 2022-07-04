@@ -99,6 +99,16 @@
         background: #054ba7;
     }
 
+    .nav-btn-active
+    {
+        background: #0f72f3;
+    }
+
+    .Dark .nav-btn-active
+    {
+        background: #393939;
+    }
+
 
     /* MAIN */
     main
@@ -329,6 +339,7 @@
     {
         margin-left: 17rem;
     }
+
 
     .header .menu-show li
     {
@@ -868,6 +879,11 @@ margin-right: 15px;
 .user-username
 {
     display: flex;
+}
+
+.Dark .nome-redef
+{
+    color: white;
 }
 
 .user-information
