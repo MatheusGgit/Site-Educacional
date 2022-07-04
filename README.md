@@ -7,3 +7,8 @@ No terminal digite:
 1 - Instale os requisitos com: pip install -r requirements.txt  
 2 - python manage.py migrate  
 3 - python manage.py runserver
+
+Equipe:
+Matheus Garcia 
+Leonardo Braga
+Guilherme Alves
